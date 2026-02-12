@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import LoadingScreen from "./LoadingScreen";
 import { I18nProvider } from "@/lib/i18n";
 
@@ -8,22 +9,31 @@ interface ClientLayoutProps {
   children: React.ReactNode;
 }
 
+const SPLASH_SHOWN_KEY = "mirai_splash_shown";
+
 export default function ClientLayout({ children }: ClientLayoutProps) {
   const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Check for reduced motion preference
+    // Only show splash on homepage AND only once per session
+    const isHomePage = pathname === "/" || pathname === "";
+    const hasSeenSplash = sessionStorage.getItem(SPLASH_SHOWN_KEY) === "true";
+
+    // Skip splash if: not homepage, already seen this session, or prefers reduced motion
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (prefersReducedMotion) {
+    if (!isHomePage || hasSeenSplash || prefersReducedMotion) {
       setIsLoading(false);
       return;
     }
 
+    // Mark splash as shown for this session
+    sessionStorage.setItem(SPLASH_SHOWN_KEY, "true");
+
     // Brand splash timing (based on UX research):
     // - 1.5s minimum: allows brand logo to be seen and remembered
     // - 2.5s maximum: stays under 3s frustration threshold
-    // - Luxury brands like Chanel, Prada use 2-3s for brand impact
     const MIN_DISPLAY_TIME = 1500;
     const MAX_DISPLAY_TIME = 2500;
 
@@ -40,7 +50,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
       // Smooth fade out transition
       setTimeout(() => setIsLoading(false), 100);
     });
-  }, []);
+  }, [pathname]);
 
   return (
     <I18nProvider>
