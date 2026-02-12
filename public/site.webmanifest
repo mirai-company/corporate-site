@@ -1,0 +1,23 @@
+{
+  "name": "未来づくりカンパニー",
+  "short_name": "MIRAI",
+  "description": "社会課題を「構造」から捉え、分断された世界を事業として結び直す",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#0B3D91",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
