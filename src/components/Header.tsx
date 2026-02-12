@@ -51,9 +51,11 @@ export default function Header() {
       <header
         role="banner"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md"
-            : "bg-transparent"
+          isOpen
+            ? "bg-transparent"
+            : scrolled
+              ? "bg-white/95 backdrop-blur-md"
+              : "bg-transparent"
         }`}
       >
         <div className="container-custom">
@@ -141,21 +143,33 @@ export default function Header() {
                   animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.2 }}
                   className={`absolute top-0 left-0 w-full h-[1.5px] ${
-                    isOpen || (isHomePage && !scrolled) ? "bg-white" : "bg-[#1A1A1A]"
+                    isOpen
+                      ? "bg-white"
+                      : isHomePage && !scrolled
+                        ? "bg-white"
+                        : "bg-[#1A1A1A]"
                   }`}
                 />
                 <motion.span
                   animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
                   transition={{ duration: 0.2 }}
                   className={`absolute top-1/2 left-0 w-full h-[1.5px] -translate-y-1/2 ${
-                    isOpen || (isHomePage && !scrolled) ? "bg-white" : "bg-[#1A1A1A]"
+                    isOpen
+                      ? "bg-white"
+                      : isHomePage && !scrolled
+                        ? "bg-white"
+                        : "bg-[#1A1A1A]"
                   }`}
                 />
                 <motion.span
                   animate={isOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.2 }}
                   className={`absolute bottom-0 left-0 w-full h-[1.5px] ${
-                    isOpen || (isHomePage && !scrolled) ? "bg-white" : "bg-[#1A1A1A]"
+                    isOpen
+                      ? "bg-white"
+                      : isHomePage && !scrolled
+                        ? "bg-white"
+                        : "bg-[#1A1A1A]"
                   }`}
                 />
               </div>
