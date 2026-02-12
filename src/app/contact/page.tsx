@@ -4,6 +4,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 
+// Web3Forms Access Key
+const WEB3FORMS_ACCESS_KEY = "c22cd755-eaca-46a6-87b7-e7aed2564c9a";
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -15,17 +18,45 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { t, locale } = useI18n();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || "未記入",
+          phone: formData.phone || "未記入",
+          subject: formData.subject,
+          message: formData.message,
+          from_name: "未来づくりカンパニー お問い合わせ",
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setError(locale === "en" ? "Failed to send. Please try again." : "送信に失敗しました。もう一度お試しください。");
+      }
+    } catch {
+      setError(locale === "en" ? "Network error. Please try again." : "ネットワークエラー。もう一度お試しください。");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -97,6 +128,16 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Honeypot field for spam protection - hidden from users */}
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
+                  {/* Error message */}
+                  {error && (
+                    <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-sm font-gothic">
+                      {error}
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
                     <div>
