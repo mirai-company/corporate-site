@@ -15,13 +15,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#1A1A1A] text-white">
+    <footer role="contentinfo" className="bg-[#1A1A1A] text-white">
       <div className="container-custom py-16 md:py-20">
         {/* Top section */}
         <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-8 pb-12 border-b border-white/10">
           {/* Brand */}
           <div className="max-w-sm">
-            <Link href="/" className="inline-block mb-6 cursor-pointer hover:opacity-70 transition-opacity duration-200">
+            <Link href="/" aria-label="ホームに戻る" className="inline-block mb-6 cursor-pointer hover:opacity-70 transition-opacity duration-200">
               <Image
                 src="/images/companylogowhite.png"
                 alt="未来づくりカンパニー"
@@ -38,9 +38,9 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <nav className="flex gap-8 md:gap-12">
+          <nav aria-label="フッターナビゲーション" className="flex gap-8 md:gap-12">
             <div>
-              <ul className="space-y-1">
+              <ul className="space-y-1" role="list">
                 {footerLinks.map((link) => (
                   <li key={link.href}>
                     <Link
@@ -63,6 +63,7 @@ export default function Footer() {
               <p className="pt-2">
                 <a
                   href="tel:03-6230-9855"
+                  aria-label="電話をかける: 03-6230-9855"
                   className="text-white/70 hover:text-white transition-colors duration-200 cursor-pointer"
                 >
                   03-6230-9855

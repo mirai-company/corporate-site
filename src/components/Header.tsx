@@ -49,6 +49,7 @@ export default function Header() {
   return (
     <>
       <header
+        role="banner"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-white/95 backdrop-blur-md"
@@ -74,7 +75,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav aria-label="メインナビゲーション" className="hidden lg:flex items-center gap-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -90,11 +91,17 @@ export default function Header() {
               ))}
 
               {/* Language Toggle */}
-              <div className={`flex items-center text-[12px] font-gothic ${
-                isHomePage && !scrolled ? "text-white/70" : "text-[#1A1A1A]/50"
-              }`}>
+              <div
+                role="group"
+                aria-label="言語切り替え"
+                className={`flex items-center text-[12px] font-gothic ${
+                  isHomePage && !scrolled ? "text-white/70" : "text-[#1A1A1A]/50"
+                }`}
+              >
                 <button
                   onClick={() => setLocale("ja")}
+                  aria-label="日本語に切り替え"
+                  aria-pressed={locale === "ja"}
                   className={`px-3 py-2 min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200 cursor-pointer ${
                     locale === "ja"
                       ? isHomePage && !scrolled
@@ -105,9 +112,11 @@ export default function Header() {
                 >
                   JP
                 </button>
-                <span className="text-current">/</span>
+                <span aria-hidden="true" className="text-current">/</span>
                 <button
                   onClick={() => setLocale("en")}
+                  aria-label="Switch to English"
+                  aria-pressed={locale === "en"}
                   className={`px-3 py-2 min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200 cursor-pointer ${
                     locale === "en"
                       ? isHomePage && !scrolled
@@ -163,6 +172,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            aria-label="モバイルメニュー"
             className="fixed inset-0 z-40 lg:hidden bg-[#0B3D91]"
           >
             <div className="h-full flex flex-col items-center justify-center">
