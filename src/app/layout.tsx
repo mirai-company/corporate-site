@@ -9,21 +9,24 @@ import ClientLayout from "@/components/ClientLayout";
 const cormorant = Cormorant_Garamond({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "600"],
+  display: "swap", // Show text immediately with fallback font
 });
 
 // Modern Japanese sans-serif for headings
 const zenKakuGothic = Zen_Kaku_Gothic_New({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["500", "700"],
+  display: "swap",
 });
 
 // Clean body text
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-gothic",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://miraidukuri.co.jp";

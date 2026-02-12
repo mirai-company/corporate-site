@@ -264,3 +264,98 @@ label[for], summary, [tabindex]:not([tabindex="-1"]) {
     rgba(11, 61, 145, 0.03) 11px
   );
 }
+
+/* GPU-accelerated hero animations */
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(100px, 50px) rotate(5deg); }
+}
+
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-80px, -40px) rotate(-3deg); }
+}
+
+@keyframes orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  50% { transform: translate(60px, -40px) scale(1.3); opacity: 0.5; }
+}
+
+@keyframes orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  50% { transform: translate(-50px, 50px) scale(1.4); opacity: 0.6; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.35; }
+}
+
+@keyframes float-1 {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+  50% { transform: translateY(-30px) scale(1.5); opacity: 0.5; }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+  50% { transform: translateY(-25px) scale(1.3); opacity: 0.4; }
+}
+
+@keyframes float-3 {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+  50% { transform: translateY(-35px) scale(1.4); opacity: 0.5; }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.animate-aurora-1 {
+  animation: aurora-1 15s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-2 {
+  animation: aurora-2 18s ease-in-out infinite;
+  animation-delay: 2s;
+  will-change: transform;
+}
+
+.animate-orb-1 {
+  animation: orb-1 6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-orb-2 {
+  animation: orb-2 7s ease-in-out infinite;
+  animation-delay: 1s;
+  will-change: transform, opacity;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+  animation-delay: 0.5s;
+  will-change: transform, opacity;
+}
+
+.animate-float-1 {
+  animation: float-1 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-float-2 {
+  animation: float-2 5s ease-in-out infinite;
+  animation-delay: 0.5s;
+  will-change: transform, opacity;
+}
+
+.animate-float-3 {
+  animation: float-3 4.5s ease-in-out infinite;
+  animation-delay: 1s;
+  will-change: transform, opacity;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2.5s ease-in-out infinite;
+}

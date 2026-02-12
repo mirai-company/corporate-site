@@ -8,116 +8,38 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#050810]">
-      {/* Gradient Background with intense dynamic elements */}
+      {/* Gradient Background - CSS animations for GPU performance */}
       <div className="absolute inset-0 z-0">
-        {/* Base gradient - deeper, more dramatic */}
+        {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B3D91] via-[#061228] to-[#050810]" />
 
-        {/* Animated aurora-like waves */}
-        <motion.div
-          className="absolute -top-1/2 -left-1/4 w-[120%] h-[80%] opacity-40"
+        {/* Aurora waves - CSS animated */}
+        <div
+          className="absolute -top-1/2 -left-1/4 w-[120%] h-[80%] opacity-40 animate-aurora-1"
           style={{
             background: 'linear-gradient(135deg, transparent 0%, rgba(11,61,145,0.4) 25%, rgba(30,91,181,0.3) 50%, transparent 75%)',
             filter: 'blur(60px)',
           }}
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
         />
-        <motion.div
-          className="absolute -bottom-1/4 -right-1/4 w-[100%] h-[70%] opacity-30"
+        <div
+          className="absolute -bottom-1/4 -right-1/4 w-[100%] h-[70%] opacity-30 animate-aurora-2"
           style={{
             background: 'linear-gradient(225deg, transparent 0%, rgba(59,130,246,0.3) 30%, rgba(11,61,145,0.4) 60%, transparent 100%)',
             filter: 'blur(80px)',
           }}
-          animate={{
-            x: [0, -80, 0],
-            y: [0, -40, 0],
-            rotate: [0, -3, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
         />
 
-        {/* Bright accent orbs */}
-        <motion.div
-          className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full bg-[#3B82F6]/30 blur-[80px]"
-          animate={{
-            x: [0, 60, 0],
-            y: [0, -40, 0],
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 left-1/3 w-[250px] h-[250px] rounded-full bg-[#0B3D91]/40 blur-[60px]"
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 50, 0],
-            scale: [1, 1.4, 1],
-            opacity: [0.4, 0.6, 0.4],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#1E5BB5]/25 blur-[100px]"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.35, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5,
-          }}
-        />
+        {/* Orbs - CSS animated */}
+        <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full bg-[#3B82F6]/30 blur-[80px] animate-orb-1" />
+        <div className="absolute bottom-1/3 left-1/3 w-[250px] h-[250px] rounded-full bg-[#0B3D91]/40 blur-[60px] animate-orb-2" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#1E5BB5]/25 blur-[100px] animate-pulse-slow" />
 
-        {/* Floating particles */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full"
-            style={{
-              left: `${15 + i * 15}%`,
-              top: `${20 + (i % 3) * 25}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.5, 0.2],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 4 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.8,
-            }}
-          />
-        ))}
+        {/* Floating particles - reduced to 3, CSS animated */}
+        <div className="absolute w-1 h-1 bg-white/20 rounded-full animate-float-1" style={{ left: '20%', top: '30%' }} />
+        <div className="absolute w-1 h-1 bg-white/20 rounded-full animate-float-2" style={{ left: '50%', top: '40%' }} />
+        <div className="absolute w-1 h-1 bg-white/20 rounded-full animate-float-3" style={{ left: '75%', top: '25%' }} />
 
-        {/* Grid pattern - more visible */}
+        {/* Grid pattern */}
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -129,21 +51,21 @@ export default function HeroSection() {
           }}
         />
 
-        {/* Radial light burst from center */}
+        {/* Radial light */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(11,61,145,0.15)_0%,_transparent_60%)]" />
 
         {/* Noise texture */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')]" />
 
-        {/* Strong vignette */}
+        {/* Vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(5,8,16,0.5)_100%)]" />
       </div>
 
-      {/* Main Content */}
+      {/* Main Content - keep Framer Motion for one-time entrance animations only */}
       <div className="flex-1 flex items-center relative z-10 pt-24 md:pt-32">
         <div className="container-custom w-full">
           <div className="max-w-5xl mx-auto">
-            {/* Headline - centered, white extra bold Noto Sans, no shadow */}
+            {/* Headline */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -157,7 +79,7 @@ export default function HeroSection() {
               </h1>
             </motion.div>
 
-            {/* Subtitle - what we do */}
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -167,7 +89,7 @@ export default function HeroSection() {
               {t("hero.subtitle")}
             </motion.p>
 
-            {/* Service descriptor - concrete deliverables */}
+            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -210,17 +132,9 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll indicator - white */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.6 }}
-        transition={{ delay: 1.5 }}
-        className="relative z-10 pb-8 flex justify-center"
-      >
-        <motion.div
-          animate={{ y: [0, 4, 0] }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-        >
+      {/* Scroll indicator - CSS animated */}
+      <div className="relative z-10 pb-8 flex justify-center opacity-60">
+        <div className="animate-bounce-slow">
           <svg
             className="w-4 h-4 text-white"
             viewBox="0 0 20 20"
@@ -230,8 +144,8 @@ export default function HeroSection() {
           >
             <path d="M10 4v12M6 12l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
