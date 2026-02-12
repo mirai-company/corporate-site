@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 
 export default function Footer() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
   const footerLinks = [
     { href: "/about", labelKey: "footer.links.about" },
@@ -18,7 +18,7 @@ export default function Footer() {
     <footer role="contentinfo" className="bg-[#1A1A1A] text-white">
       <div className="container-custom py-16 md:py-20">
         {/* Top section */}
-        <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-8 pb-12 border-b border-white/10">
+        <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-8 pb-12 border-b border-white/10">
           {/* Brand */}
           <div className="max-w-sm">
             <Link href="/" aria-label="ホームに戻る" className="inline-block mb-6 cursor-pointer hover:opacity-70 transition-opacity duration-200">
@@ -55,18 +55,45 @@ export default function Footer() {
             </div>
           </nav>
 
-          {/* Contact */}
-          <div>
-            <address className="not-italic text-sm text-white/50 space-y-2 font-gothic">
-              <p className="text-white/70">東京都港区赤坂3-13-4</p>
-              <p>第3吉田ビル3F</p>
-              <p className="pt-2">
+          {/* Contact Info */}
+          <div className="lg:text-right">
+            <address className="not-italic text-sm text-white/50 space-y-3 font-gothic">
+              {/* Address */}
+              <div>
+                <p className="text-white/70">〒107-0052</p>
+                <p className="text-white/70">
+                  {locale === "en" ? "3-13-4 Akasaka, Minato-ku, Tokyo" : "東京都港区赤坂3-13-4"}
+                </p>
+                <p>{locale === "en" ? "3F Yoshida Building No. 3" : "第3吉田ビル3F"}</p>
+              </div>
+
+              {/* Phone & Fax */}
+              <div className="flex flex-col sm:flex-row sm:gap-4 lg:justify-end">
+                <p>
+                  <span className="text-white/40">TEL: </span>
+                  <a
+                    href="tel:03-6230-9855"
+                    aria-label="電話をかける: 03-6230-9855"
+                    className="text-white/70 hover:text-white transition-colors duration-200 cursor-pointer"
+                  >
+                    03-6230-9855
+                  </a>
+                </p>
+                <p>
+                  <span className="text-white/40">FAX: </span>
+                  <span className="text-white/70">03-6230-9856</span>
+                </p>
+              </div>
+
+              {/* Email */}
+              <p>
+                <span className="text-white/40">E-mail: </span>
                 <a
-                  href="tel:03-6230-9855"
-                  aria-label="電話をかける: 03-6230-9855"
+                  href="mailto:info@miraidukuri.co.jp"
+                  aria-label="メールを送る: info@miraidukuri.co.jp"
                   className="text-white/70 hover:text-white transition-colors duration-200 cursor-pointer"
                 >
-                  03-6230-9855
+                  info@miraidukuri.co.jp
                 </a>
               </p>
             </address>
@@ -74,10 +101,19 @@ export default function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/30 font-gothic">
-            © {new Date().getFullYear()} MIRAI Creation Company
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          {/* Copyright */}
+          <p className="text-xs text-white/30 font-gothic order-2 sm:order-1">
+            Copyright © {new Date().getFullYear()} MIRAI Creation Company Co., Ltd.
           </p>
+
+          {/* Privacy Policy Link */}
+          <Link
+            href="/privacy"
+            className="text-xs text-white/50 hover:text-white transition-colors duration-200 font-gothic cursor-pointer order-1 sm:order-2"
+          >
+            {locale === "en" ? "Privacy Policy" : "プライバシーポリシー"}
+          </Link>
         </div>
       </div>
     </footer>
