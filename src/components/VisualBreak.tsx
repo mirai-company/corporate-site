@@ -21,7 +21,7 @@ export default function VisualBreak() {
       <div
         className="absolute inset-0 bg-cover bg-center md:bg-fixed"
         style={{
-          backgroundImage: `url('/images/fireworks.png')`,
+          backgroundImage: `url('/images/fireworks.webp')`,
         }}
       />
 

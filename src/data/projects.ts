@@ -181,7 +181,7 @@ export const projects: Project[] = [
     domain: "life",
     domainLabel: "生命資本",
     year: "2008",
-    image: "/images/mibyou-img.png",
+    image: "/images/mibyou-img.webp",
     previewImage: "/images/mibyou-preview.webp",
     externalUrl: "https://mibyo.org/",
     tags: ["未病", "健康寿命", "予防医療", "地域創生", "ウェルネス"],
