@@ -75,26 +75,26 @@ const ceoMedia = [
     titleEn: "Lifelong Active Community (Inaugural Issue)",
     subtitle: "(2018年8月)",
     subtitleEn: "(August 2018)",
-    image: "/images/media/covers/covers-01.png",
-    link: "https://miraidukuri.co.jp/38xp7a/wp-content/themes/mirai-custom/images/media.pdf",
+    image: "/images/media/covers/covers-01.jpg",
+    link: "/pdf/shougai-katsuyaku.pdf",
   },
   {
     title: "地域が稼ぐ観光",
     titleEn: "Tourism That Profits Regions",
-    image: "/images/media/covers/covers-02.png",
+    image: "/images/media/covers/covers-02.jpg",
     link: "https://www.amazon.co.jp/%E5%9C%B0%E5%9F%9F%E3%81%8C%E7%A8%BC%E3%81%90%E8%A6%B3%E5%85%89-%E5%A4%A7%E7%BE%BD%E6%98%AD%E4%BB%81/dp/488335444X",
   },
   {
     title: "カラふる",
     titleEn: "Colorfuru",
-    image: "/images/media/covers/covers-03.png",
+    image: "/images/media/covers/covers-03.jpg",
     link: "https://colorfuru.jp/tag/%E3%83%8B%E3%83%83%E3%83%9D%E3%83%B3%E3%81%AE%E6%9C%AA%E6%9D%A5%E3%81%A5%E3%81%8F%E3%82%8A%E8%80%83%E5%AF%9F",
   },
   {
     title: "観光総研公開講座",
     titleEn: "Tourism Research Public Lecture",
-    image: "/images/media/covers/covers-04.png",
-    link: "https://miraidukuri.co.jp/38xp7a/wp-content/themes/mirai-custom/images/20211125_kankosoken.pdf",
+    image: "/images/media/covers/covers-04.jpg",
+    link: "/pdf/kankosoken.pdf",
   },
 ];
 
