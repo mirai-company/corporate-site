@@ -11,6 +11,24 @@ interface ClientLayoutProps {
 
 const SPLASH_SHOWN_KEY = "mirai_splash_shown";
 
+// Critical images to preload before showing homepage
+// These are the featured project images shown on homepage
+const CRITICAL_IMAGES = [
+  "/images/preview-mito.webp",   // Featured project 1
+  "/images/preview-JTA.webp",    // Featured project 2
+  "/images/preview-mirai.webp",  // Featured project 3
+];
+
+// Preload an image and return a promise
+function preloadImage(src: string): Promise<void> {
+  return new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => resolve();
+    img.onerror = () => resolve(); // Don't block on error
+    img.src = src;
+  });
+}
+
 export default function ClientLayout({ children }: ClientLayoutProps) {
   const [isLoading, setIsLoading] = useState(true);
   const pathname = usePathname();
@@ -31,20 +49,21 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     // Mark splash as shown for this session
     sessionStorage.setItem(SPLASH_SHOWN_KEY, "true");
 
-    // Brand splash timing (based on UX research):
-    // - 1.5s minimum: allows brand logo to be seen and remembered
-    // - 2.5s maximum: stays under 3s frustration threshold
-    const MIN_DISPLAY_TIME = 1500;
-    const MAX_DISPLAY_TIME = 2500;
+    // Splash timing:
+    // - 2s minimum: allows brand logo to be seen + images to start loading
+    // - 4s maximum: timeout for slow connections
+    const MIN_DISPLAY_TIME = 2000;
+    const MAX_DISPLAY_TIME = 4000;
 
-    // Wait for both fonts AND minimum brand time
+    // Preload critical images
+    const imageLoadPromise = Promise.all(CRITICAL_IMAGES.map(preloadImage));
     const fontLoadPromise = document.fonts.ready;
     const minTimePromise = new Promise(resolve => setTimeout(resolve, MIN_DISPLAY_TIME));
     const maxTimePromise = new Promise(resolve => setTimeout(resolve, MAX_DISPLAY_TIME));
 
-    // Show loading for at least MIN_DISPLAY_TIME, but never exceed MAX_DISPLAY_TIME
+    // Wait for: (fonts + images + min time) OR max time (whichever comes first)
     Promise.race([
-      Promise.all([fontLoadPromise, minTimePromise]),
+      Promise.all([fontLoadPromise, imageLoadPromise, minTimePromise]),
       maxTimePromise
     ]).then(() => {
       // Smooth fade out transition

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { projects, domainLabels } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
 
@@ -75,11 +76,14 @@ export default function ProjectsSection() {
                 <Link href={`/projects/${project.id}`} className="group block">
                   {/* Image */}
                   <div className="relative aspect-[3/2] overflow-hidden bg-[#F5F5F5] mb-6">
-                    <img
+                    <Image
                       src={project.previewImage || project.image}
-                      alt={project.title}
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      alt={locale === "en" && project.titleEn ? project.titleEn : project.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
                     />
                   </div>
 
