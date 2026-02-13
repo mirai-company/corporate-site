@@ -199,7 +199,7 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   className="grid grid-cols-[80px_1fr] md:grid-cols-[100px_1fr] gap-4 md:gap-8 py-4 border-b border-[#E5E5E5]"
                 >
-                  <span className="text-[#0B3D91] text-sm font-gothic tabular-nums">
+                  <span className={`text-[#0B3D91] text-sm font-gothic tabular-nums ${item.year === "2018" ? "font-bold" : ""}`}>
                     {item.year}
                   </span>
                   <p className="text-sm text-[#333] font-gothic leading-relaxed">
