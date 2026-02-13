@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef, useMemo } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { projects, domainLabels } from "@/data/projects";
@@ -22,24 +20,14 @@ const getFeaturedProjects = () => {
 };
 
 export default function ProjectsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "100px" }); // Trigger early
   const featuredProjects = useMemo(() => getFeaturedProjects(), []);
   const { t, locale } = useI18n();
 
-  // Always animate in after mount (visible by default), use isInView for stagger timing
-  const shouldAnimate = true;
-
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-[#FAFAFA]">
+    <section className="py-24 md:py-32 bg-[#FAFAFA]">
       <div className="container-custom">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between mb-14"
-        >
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14">
           <div>
             <span className="text-[#0B3D91] text-xs tracking-[0.2em] uppercase font-gothic">
               {t("projects.label")}
@@ -63,49 +51,42 @@ export default function ProjectsSection() {
               <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>
-        </motion.div>
+        </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid - No animations, visible immediately */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {featuredProjects.map((project, index) => {
+          {featuredProjects.map((project) => {
             const domainInfo = domainLabels[project.domain];
             return (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              >
-                <Link href={`/projects/${project.id}`} className="group block">
-                  {/* Image */}
-                  <div className="relative aspect-[3/2] overflow-hidden bg-[#F5F5F5] mb-6">
-                    <Image
-                      src={project.previewImage || project.image}
-                      alt={locale === "en" && project.titleEn ? project.titleEn : project.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      priority
-                    />
-                  </div>
+              <Link key={project.id} href={`/projects/${project.id}`} className="group block">
+                {/* Image */}
+                <div className="relative aspect-[3/2] overflow-hidden bg-[#F5F5F5] mb-6">
+                  <Image
+                    src={project.previewImage || project.image}
+                    alt={locale === "en" && project.titleEn ? project.titleEn : project.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    priority
+                  />
+                </div>
 
-                  {/* Content */}
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className={`text-xs tracking-wider font-gothic tabular-nums ${project.comingSoon ? 'text-[#1A1A1A] font-medium' : 'text-[#888]'}`}>
-                      {project.comingSoon ? t("projects.comingSoon") : project.year}
-                    </span>
-                    <span className="text-xs text-[#0B3D91] px-2.5 py-1 bg-[#0B3D91]/5 font-gothic">
-                      {locale === "en" ? domainInfo.en : domainInfo.ja}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-300">
-                    {locale === "en" && project.titleEn ? project.titleEn : project.title}
-                  </h3>
-                  <p className="text-sm text-[#555] mt-2 font-gothic leading-relaxed">
-                    {project.subtitle}
-                  </p>
-                </Link>
-              </motion.div>
+                {/* Content */}
+                <div className="flex items-center gap-3 mb-3">
+                  <span className={`text-xs tracking-wider font-gothic tabular-nums ${project.comingSoon ? 'text-[#1A1A1A] font-medium' : 'text-[#888]'}`}>
+                    {project.comingSoon ? t("projects.comingSoon") : project.year}
+                  </span>
+                  <span className="text-xs text-[#0B3D91] px-2.5 py-1 bg-[#0B3D91]/5 font-gothic">
+                    {locale === "en" ? domainInfo.en : domainInfo.ja}
+                  </span>
+                </div>
+                <h3 className="text-xl font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-300">
+                  {locale === "en" && project.titleEn ? project.titleEn : project.title}
+                </h3>
+                <p className="text-sm text-[#555] mt-2 font-gothic leading-relaxed">
+                  {project.subtitle}
+                </p>
+              </Link>
             );
           })}
         </div>
