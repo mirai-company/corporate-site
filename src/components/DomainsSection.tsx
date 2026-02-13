@@ -1,14 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 
 export default function DomainsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t, locale } = useI18n();
 
   const domains = [
@@ -39,13 +35,13 @@ export default function DomainsSection() {
   ];
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-[#FAFAFA]">
+    <section className="py-24 md:py-32 bg-[#FAFAFA]">
       <div className="container-custom">
-        {/* Section Header */}
+        {/* Section Header - No animation delay, content visible immediately */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-16"
         >
           <span className="text-[#0B3D91] text-xs tracking-[0.2em] uppercase font-gothic">
@@ -65,8 +61,8 @@ export default function DomainsSection() {
             <motion.div
               key={domain.id}
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 + index * 0.08 }}
             >
               <Link
                 href={`/projects?domain=${domain.id}`}

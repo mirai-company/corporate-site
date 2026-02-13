@@ -23,9 +23,12 @@ const getFeaturedProjects = () => {
 
 export default function ProjectsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" }); // Trigger early
   const featuredProjects = useMemo(() => getFeaturedProjects(), []);
   const { t, locale } = useI18n();
+
+  // Always animate in after mount (visible by default), use isInView for stagger timing
+  const shouldAnimate = true;
 
   return (
     <section ref={ref} className="py-24 md:py-32 bg-[#FAFAFA]">
@@ -33,8 +36,8 @@ export default function ProjectsSection() {
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="flex flex-col md:flex-row md:items-end md:justify-between mb-14"
         >
           <div>
@@ -70,8 +73,8 @@ export default function ProjectsSection() {
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.12 }}
+                animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               >
                 <Link href={`/projects/${project.id}`} className="group block">
                   {/* Image */}
@@ -82,8 +85,7 @@ export default function ProjectsSection() {
                       fill
                       sizes="(max-width: 1024px) 100vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      priority={index === 0}
-                      loading={index === 0 ? "eager" : "lazy"}
+                      priority
                     />
                   </div>
 
