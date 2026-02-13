@@ -3,6 +3,7 @@
 import { useState, useMemo, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { projects, domainLabels, ProjectDomain } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
@@ -85,12 +86,16 @@ function ProjectsContent() {
                     >
                       {/* Image */}
                       <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F5F5] mb-4 transition-shadow duration-200 group-hover:shadow-lg">
-                        <div
-                          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                          style={{ backgroundImage: `url('${project.previewImage || project.image}')` }}
+                        <Image
+                          src={project.previewImage || project.image}
+                          alt={locale === "en" && project.titleEn ? project.titleEn : project.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading={index < 6 ? "eager" : "lazy"}
                         />
                         {/* Domain badge */}
-                        <div className="absolute top-4 left-4">
+                        <div className="absolute top-4 left-4 z-10">
                           <span
                             className="inline-block text-white text-xs px-3 py-1 tracking-wider font-gothic"
                             style={{ backgroundColor: domainInfo.color }}
