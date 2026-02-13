@@ -185,71 +185,28 @@ export default function AboutPage() {
           </SectionFade>
 
           {/* CEO Timeline */}
-          <SectionFade className="mt-20">
-            <div className="flex items-center gap-4 mb-10">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#0B3D91]/20 to-transparent" />
-              <h3 className="text-xl font-heading text-[#1A1A1A] px-4">{t("about.ceo.timeline")}</h3>
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#0B3D91]/20 to-transparent" />
-            </div>
-            <div className="max-w-4xl mx-auto">
-              {ceoTimeline.map((item, index) => {
-                const isKeyMilestone = ["2018", "2025"].includes(item.year);
-                return (
-                  <motion.div
-                    key={item.year}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className={`group flex gap-4 md:gap-8 pb-8 border-l-2 pl-6 md:pl-8 relative transition-all duration-300 hover:bg-[#0B3D91]/[0.02] -ml-px ${
-                      isKeyMilestone
-                        ? "border-[#0B3D91] bg-[#0B3D91]/[0.03]"
-                        : "border-[#0B3D91]/20"
-                    } ${index === ceoTimeline.length - 1 ? "pb-0 border-l-0" : ""}`}
-                  >
-                    {/* Timeline Node */}
-                    <div
-                      className={`absolute left-0 top-0 -translate-x-1/2 transition-transform duration-300 group-hover:scale-125 ${
-                        isKeyMilestone ? "w-4 h-4 -translate-x-[7px]" : "w-3 h-3 -translate-x-[5px]"
-                      }`}
-                    >
-                      <div
-                        className={`w-full h-full rounded-full ${
-                          isKeyMilestone
-                            ? "bg-[#0B3D91] ring-4 ring-[#0B3D91]/20"
-                            : "bg-[#0B3D91] group-hover:ring-4 group-hover:ring-[#0B3D91]/10"
-                        }`}
-                      />
-                    </div>
-
-                    {/* Year Badge */}
-                    <div className="shrink-0">
-                      <span
-                        className={`inline-block font-medium font-gothic transition-all duration-300 ${
-                          isKeyMilestone
-                            ? "text-white bg-[#0B3D91] px-3 py-1 text-sm rounded"
-                            : "text-[#0B3D91] text-sm group-hover:text-[#0B3D91]"
-                        }`}
-                      >
-                        {item.year}
-                      </span>
-                    </div>
-
-                    {/* Event Description */}
-                    <div className="flex-1 pt-0.5">
-                      <p
-                        className={`font-gothic leading-relaxed transition-colors duration-300 ${
-                          isKeyMilestone
-                            ? "text-[#1A1A1A] font-medium"
-                            : "text-[#555] group-hover:text-[#333]"
-                        }`}
-                      >
-                        {locale === "en" ? item.eventEn : item.event}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
+          <SectionFade className="mt-16">
+            <h3 className="text-lg font-heading text-[#1A1A1A] mb-8 tracking-wide">
+              {t("about.ceo.timeline")}
+            </h3>
+            <div className="border-t border-[#E5E5E5]">
+              {ceoTimeline.map((item, index) => (
+                <motion.div
+                  key={item.year}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: index * 0.03 }}
+                  viewport={{ once: true }}
+                  className="grid grid-cols-[80px_1fr] md:grid-cols-[100px_1fr] gap-4 md:gap-8 py-4 border-b border-[#E5E5E5]"
+                >
+                  <span className="text-[#0B3D91] text-sm font-gothic tabular-nums">
+                    {item.year}
+                  </span>
+                  <p className="text-sm text-[#333] font-gothic leading-relaxed">
+                    {locale === "en" ? item.eventEn : item.event}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </SectionFade>
         </div>
