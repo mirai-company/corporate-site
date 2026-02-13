@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { NewsItem } from "@/data/news";
+import { NewsItem, categoryLabels } from "@/data/news";
+import { useI18n } from "@/lib/i18n";
 
 interface Props {
   newsItem: NewsItem;
@@ -10,6 +11,13 @@ interface Props {
 }
 
 export default function NewsDetailClient({ newsItem, otherNews }: Props) {
+  const { locale } = useI18n();
+
+  const title = locale === "en" && newsItem.titleEn ? newsItem.titleEn : newsItem.title;
+  const excerpt = locale === "en" && newsItem.excerptEn ? newsItem.excerptEn : newsItem.excerpt;
+  const content = locale === "en" && newsItem.contentEn ? newsItem.contentEn : newsItem.content;
+  const categoryLabel = locale === "en" ? categoryLabels[newsItem.category].en : categoryLabels[newsItem.category].ja;
+
   return (
     <>
       {/* Hero */}
@@ -24,14 +32,14 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm mb-8 font-gothic">
               <Link href="/" className="text-[#555555] hover:text-[#0B3D91] transition-colors duration-200 cursor-pointer">
-                ホーム
+                {locale === "en" ? "Home" : "ホーム"}
               </Link>
               <span className="text-[#555555]">/</span>
               <Link
                 href="/news"
                 className="text-[#555555] hover:text-[#0B3D91] transition-colors duration-200 cursor-pointer"
               >
-                お知らせ
+                {locale === "en" ? "News" : "お知らせ"}
               </Link>
             </nav>
 
@@ -41,13 +49,13 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
                 {newsItem.date}
               </time>
               <span className="text-xs bg-[#0B3D91]/10 text-[#0B3D91] px-2 py-1 font-gothic">
-                {newsItem.category}
+                {categoryLabel}
               </span>
             </div>
 
             {/* Title */}
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-heading text-[#333333] leading-relaxed">
-              {newsItem.title}
+              {title}
             </h1>
           </motion.div>
         </div>
@@ -82,12 +90,29 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
             className="max-w-3xl"
           >
             <div className="prose prose-lg max-w-none font-gothic text-[#555555]">
-              {(newsItem.content || newsItem.excerpt).split("\n").map((paragraph, index) => (
+              {(content || excerpt).split("\n").map((paragraph, index) => (
                 <p key={index} className="leading-relaxed mb-4">
                   {paragraph}
                 </p>
               ))}
             </div>
+
+            {/* External Link Button */}
+            {newsItem.externalLink && (
+              <div className="mt-8">
+                <a
+                  href={newsItem.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#0B3D91] text-white text-sm font-gothic hover:bg-[#072B66] transition-colors duration-200"
+                >
+                  <span>{locale === "en" ? "View Details" : "詳細を見る"}</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            )}
 
             {/* Back button */}
             <div className="mt-12 pt-8 border-t border-gray-200">
@@ -108,7 +133,7 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
                     d="M7 16l-4-4m0 0l4-4m-4 4h18"
                   />
                 </svg>
-                <span>お知らせ一覧に戻る</span>
+                <span>{locale === "en" ? "Back to News" : "お知らせ一覧に戻る"}</span>
               </Link>
             </div>
           </motion.div>
@@ -120,7 +145,7 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
         <section className="section-padding bg-[#FAFAFA]">
           <div className="container-custom">
             <h2 className="text-2xl font-heading text-[#333333] mb-8">
-              その他のお知らせ
+              {locale === "en" ? "Other News" : "その他のお知らせ"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {otherNews.map((item) => (
@@ -134,11 +159,11 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
                       {item.date}
                     </time>
                     <span className="text-xs bg-[#0B3D91]/10 text-[#0B3D91] px-2 py-0.5 font-gothic">
-                      {item.category}
+                      {locale === "en" ? categoryLabels[item.category].en : categoryLabels[item.category].ja}
                     </span>
                   </div>
                   <h3 className="text-sm font-heading text-[#333333] group-hover:text-[#0B3D91] transition-colors duration-200 line-clamp-2">
-                    {item.title}
+                    {locale === "en" && item.titleEn ? item.titleEn : item.title}
                   </h3>
                 </Link>
               ))}

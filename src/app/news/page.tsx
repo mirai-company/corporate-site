@@ -10,10 +10,12 @@ export default function NewsPage() {
   const [activeCategory, setActiveCategory] = useState<NewsCategory | "all">("all");
   const { t, locale } = useI18n();
 
-  const newsFilters: { value: NewsCategory | "all"; labelKey: string }[] = [
-    { value: "all", labelKey: "news.filter.all" },
-    { value: "report", labelKey: "news.filter.report" },
-    { value: "announcement", labelKey: "news.filter.announcement" },
+  const newsFilters: { value: NewsCategory | "all"; label: { ja: string; en: string } }[] = [
+    { value: "all", label: { ja: "すべて", en: "All" } },
+    { value: "event", label: { ja: "イベント", en: "Event" } },
+    { value: "media", label: { ja: "メディア掲載", en: "Media" } },
+    { value: "announcement", label: { ja: "お知らせ", en: "Announcement" } },
+    { value: "release", label: { ja: "プレスリリース", en: "Press Release" } },
   ];
 
   const filteredNews = useMemo(() => {
@@ -55,7 +57,7 @@ export default function NewsPage() {
                     : "bg-gray-100 text-[#555555] hover:bg-gray-200 hover:shadow-sm"
                 }`}
               >
-                {t(filter.labelKey)}
+                {locale === "en" ? filter.label.en : filter.label.ja}
               </button>
             ))}
           </div>
@@ -106,19 +108,19 @@ export default function NewsPage() {
                             </time>
                             <span className="text-xs bg-[#0B3D91]/10 text-[#0B3D91] px-2 py-1 font-gothic">
                               {locale === "en"
-                                ? (item.category === "report" ? "Event Report" : "Announcement")
-                                : categoryLabels[item.category]}
+                                ? categoryLabels[item.category].en
+                                : categoryLabels[item.category].ja}
                             </span>
                           </div>
 
                           {/* Title */}
                           <h2 className="text-lg md:text-xl font-heading text-[#333333] group-hover:text-[#0B3D91] transition-colors duration-200 leading-relaxed">
-                            {item.title}
+                            {locale === "en" && item.titleEn ? item.titleEn : item.title}
                           </h2>
 
                           {/* Excerpt */}
                           <p className="text-sm text-[#555555] mt-3 line-clamp-2 font-gothic">
-                            {item.excerpt}
+                            {locale === "en" && item.excerptEn ? item.excerptEn : item.excerpt}
                           </p>
 
                           {/* Read more */}

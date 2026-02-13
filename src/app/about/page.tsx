@@ -69,6 +69,42 @@ const ceoTimeline = [
   },
 ];
 
+const ceoMedia = [
+  {
+    type: "book" as const,
+    title: "地域が稼ぐ観光",
+    titleEn: "Tourism That Profits Regions",
+    description: "地域観光の新しいモデルを提案する著書",
+    descriptionEn: "A book proposing new models for regional tourism",
+    link: "https://www.amazon.co.jp/dp/4822261905",
+    year: "2018",
+  },
+  {
+    type: "magazine" as const,
+    title: "生涯活躍のまち 創刊号",
+    titleEn: "Lifelong Active Community Magazine (Inaugural Issue)",
+    description: "生涯活躍のまちについての特集記事",
+    descriptionEn: "Feature article on lifelong active communities",
+    year: "2018.08",
+  },
+  {
+    type: "online" as const,
+    title: "カラふる「ニッポンの未来づくり考察」",
+    titleEn: "Colorful: Japan's Future-Building Considerations",
+    description: "オンラインメディアでの連載コラム",
+    descriptionEn: "Regular column on online media",
+    link: "https://colorful.futabanet.jp/",
+  },
+  {
+    type: "lecture" as const,
+    title: "観光総研公開講座",
+    titleEn: "Tourism Research Institute Public Lecture",
+    description: "観光産業の未来についての公開講座",
+    descriptionEn: "Public lecture on the future of the tourism industry",
+    year: "2021.11.25",
+  },
+];
+
 const teamMembers = [
   { name: "T. Goto", role: "n8n Verified Creator", roleEn: "n8n Verified Creator", image: "/images/members/goto.jpg" },
   { name: "T. Toyoda", role: "プロジェクトマネージャー", roleEn: "Project Manager", image: "/images/members/toyoda.jpg" },
@@ -205,6 +241,85 @@ export default function AboutPage() {
                   <p className="text-sm text-[#333] font-gothic leading-relaxed">
                     {locale === "en" ? item.eventEn : item.event}
                   </p>
+                </motion.div>
+              ))}
+            </div>
+          </SectionFade>
+
+          {/* CEO Media Information */}
+          <SectionFade className="mt-16">
+            <h3 className="text-lg font-heading text-[#1A1A1A] mb-8 tracking-wide">
+              {locale === "en" ? "Media Information" : "メディア情報"}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {ceoMedia.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="group bg-[#FAFAFA] p-5 border border-[#E5E5E5] hover:border-[#0B3D91]/30 transition-colors duration-300"
+                >
+                  <div className="flex items-start gap-4">
+                    {/* Icon */}
+                    <div className="w-10 h-10 bg-[#0B3D91]/10 flex items-center justify-center shrink-0">
+                      {item.type === "book" && (
+                        <svg className="w-5 h-5 text-[#0B3D91]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                      )}
+                      {item.type === "magazine" && (
+                        <svg className="w-5 h-5 text-[#0B3D91]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                      )}
+                      {item.type === "online" && (
+                        <svg className="w-5 h-5 text-[#0B3D91]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                      )}
+                      {item.type === "lecture" && (
+                        <svg className="w-5 h-5 text-[#0B3D91]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        {item.year && (
+                          <span className="text-xs text-[#0B3D91] font-gothic">{item.year}</span>
+                        )}
+                        <span className="text-xs text-[#999] font-gothic">
+                          {item.type === "book" && (locale === "en" ? "Book" : "書籍")}
+                          {item.type === "magazine" && (locale === "en" ? "Magazine" : "雑誌")}
+                          {item.type === "online" && (locale === "en" ? "Online" : "ウェブ")}
+                          {item.type === "lecture" && (locale === "en" ? "Lecture" : "講演")}
+                        </span>
+                      </div>
+                      <h4 className="text-sm font-medium text-[#1A1A1A] font-gothic leading-snug">
+                        {locale === "en" ? item.titleEn : item.title}
+                      </h4>
+                      <p className="text-xs text-[#555] mt-1 font-gothic">
+                        {locale === "en" ? item.descriptionEn : item.description}
+                      </p>
+                      {item.link && (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs text-[#0B3D91] mt-2 font-gothic hover:underline"
+                        >
+                          <span>{locale === "en" ? "View" : "詳細"}</span>
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
