@@ -160,12 +160,14 @@ export default function AboutPage() {
           <SectionFade>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               {/* Photo */}
-              <div className="aspect-[4/5] bg-gray-200 overflow-hidden">
-                <div
-                  className="w-full h-full bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url('/images/members/oba.jpg')`,
-                  }}
+              <div className="aspect-[4/5] bg-gray-200 overflow-hidden relative">
+                <Image
+                  src="/images/members/oba.jpg"
+                  alt={locale === "en" ? "CEO Akihito Oba" : "代表取締役 大羽昭仁"}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  priority
                 />
               </div>
 
