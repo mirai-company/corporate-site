@@ -23,7 +23,7 @@ const ceoTimeline = [
     eventEn: "Transferred to Tokyo headquarters, handling major financial groups and beverage manufacturers"
   },
   {
-    year: "2002-06",
+    year: "2002-2006",
     event: "KPO キリンプラザ大阪の現代アート展覧会プロデュースを担当。",
     eventEn: "Produced contemporary art exhibitions at KPO Kirin Plaza Osaka"
   },
