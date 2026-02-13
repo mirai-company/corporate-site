@@ -71,38 +71,30 @@ const ceoTimeline = [
 
 const ceoMedia = [
   {
-    type: "magazine" as const,
     title: "生涯活躍のまち 創刊号",
-    titleEn: "Lifelong Active Community Magazine (Inaugural Issue)",
-    description: "「持続的に暮らしくみで、未来を楽しくする」特集記事掲載",
-    descriptionEn: "Featured article on 'Creating sustainable communities for an enjoyable future'",
+    titleEn: "Lifelong Active Community (Inaugural Issue)",
+    subtitle: "(2018年8月)",
+    subtitleEn: "(August 2018)",
+    image: "/images/media/covers/covers-01.png",
     link: "https://miraidukuri.co.jp/38xp7a/wp-content/themes/mirai-custom/images/media.pdf",
-    year: "2018年8月",
   },
   {
-    type: "book" as const,
     title: "地域が稼ぐ観光",
     titleEn: "Tourism That Profits Regions",
-    description: "ポストコロナ時代のトレンドをイチ早くとらえた観光書籍",
-    descriptionEn: "A tourism book that captures post-COVID trends ahead of its time",
-    link: "https://www.amazon.co.jp/%E5%9C%B0%E5%9F%9F%E3%81%8C%E7%A8%BC%E3%81%90%E8%A6%B3%E5%85%89-%E5%A4%A7%E7%BE%BD%E6%98%AD%E4%BB%81/dp/488335444X/ref=sr_1_1?ie=UTF8&qid=1537336452&sr=8-1&keywords=%E5%9C%B0%E5%9F%9F%E3%81%8C%E7%A8%BC%E3%81%90%E8%A6%B3%E5%85%89",
+    image: "/images/media/covers/covers-02.png",
+    link: "https://www.amazon.co.jp/%E5%9C%B0%E5%9F%9F%E3%81%8C%E7%A8%BC%E3%81%90%E8%A6%B3%E5%85%89-%E5%A4%A7%E7%BE%BD%E6%98%AD%E4%BB%81/dp/488335444X",
   },
   {
-    type: "online" as const,
     title: "カラふる",
     titleEn: "Colorfuru",
-    description: "「ニッポンの未来づくり考察」連載コラム",
-    descriptionEn: "'Japan's Future-Building Considerations' column series",
+    image: "/images/media/covers/covers-03.png",
     link: "https://colorfuru.jp/tag/%E3%83%8B%E3%83%83%E3%83%9D%E3%83%B3%E3%81%AE%E6%9C%AA%E6%9D%A5%E3%81%A5%E3%81%8F%E3%82%8A%E8%80%83%E5%AF%9F",
   },
   {
-    type: "lecture" as const,
-    title: "観光総合研究所公開講座",
-    titleEn: "Tourism Research Institute Public Lecture",
-    description: "第16回公開講座「ポストコロナ時代の観光の在り方」",
-    descriptionEn: "16th Public Lecture: 'The Future of Tourism in the Post-COVID Era'",
+    title: "観光総研公開講座",
+    titleEn: "Tourism Research Public Lecture",
+    image: "/images/media/covers/covers-04.png",
     link: "https://miraidukuri.co.jp/38xp7a/wp-content/themes/mirai-custom/images/20211125_kankosoken.pdf",
-    year: "2021年11月25日",
   },
 ];
 
@@ -252,76 +244,53 @@ export default function AboutPage() {
             <h3 className="text-lg font-heading text-[#1A1A1A] mb-8 tracking-wide">
               {locale === "en" ? "Media Information" : "メディア情報"}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {ceoMedia.map((item, index) => (
-                <motion.div
+                <motion.a
                   key={item.title}
-                  initial={{ opacity: 0, y: 10 }}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{ delay: index * 0.08 }}
                   viewport={{ once: true }}
-                  className="group bg-[#FAFAFA] p-5 border border-[#E5E5E5] hover:border-[#0B3D91]/30 transition-colors duration-300"
+                  className="group block"
                 >
-                  <div className="flex items-start gap-4">
-                    {/* Icon */}
-                    <div className="w-10 h-10 bg-[#0B3D91]/10 flex items-center justify-center shrink-0">
-                      {item.type === "book" && (
-                        <svg className="w-5 h-5 text-[#0B3D91]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                      )}
-                      {item.type === "magazine" && (
-                        <svg className="w-5 h-5 text-[#0B3D91]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                        </svg>
-                      )}
-                      {item.type === "online" && (
-                        <svg className="w-5 h-5 text-[#0B3D91]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                        </svg>
-                      )}
-                      {item.type === "lecture" && (
-                        <svg className="w-5 h-5 text-[#0B3D91]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                      )}
-                    </div>
+                  {/* Image Thumbnail */}
+                  <div className="aspect-[3/4] bg-[#F0F0F0] overflow-hidden mb-3">
+                    <Image
+                      src={item.image}
+                      alt={locale === "en" ? item.titleEn : item.title}
+                      width={450}
+                      height={600}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
 
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        {item.year && (
-                          <span className="text-xs text-[#0B3D91] font-gothic">{item.year}</span>
-                        )}
-                        <span className="text-xs text-[#999] font-gothic">
-                          {item.type === "book" && (locale === "en" ? "Book" : "書籍")}
-                          {item.type === "magazine" && (locale === "en" ? "Magazine" : "雑誌")}
-                          {item.type === "online" && (locale === "en" ? "Online" : "ウェブ")}
-                          {item.type === "lecture" && (locale === "en" ? "Lecture" : "講演")}
-                        </span>
-                      </div>
-                      <h4 className="text-sm font-medium text-[#1A1A1A] font-gothic leading-snug">
+                  {/* Title & Link */}
+                  <div className="flex items-start gap-1">
+                    <div className="flex-1">
+                      <h4 className="text-sm font-gothic text-[#1A1A1A] leading-snug">
                         {locale === "en" ? item.titleEn : item.title}
                       </h4>
-                      <p className="text-xs text-[#555] mt-1 font-gothic">
-                        {locale === "en" ? item.descriptionEn : item.description}
-                      </p>
-                      {item.link && (
-                        <a
-                          href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs text-[#0B3D91] mt-2 font-gothic hover:underline"
-                        >
-                          <span>{locale === "en" ? "View" : "詳細"}</span>
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
+                      {item.subtitle && (
+                        <p className="text-xs text-[#666] font-gothic mt-0.5">
+                          {locale === "en" ? item.subtitleEn : item.subtitle}
+                        </p>
                       )}
                     </div>
+                    {/* External link icon */}
+                    <svg
+                      className="w-3.5 h-3.5 text-[#999] shrink-0 mt-0.5 group-hover:text-[#0B3D91] transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
           </SectionFade>
