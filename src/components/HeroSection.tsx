@@ -117,6 +117,7 @@ export default function HeroSection() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
+                  aria-hidden="true"
                 >
                   <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -141,6 +142,7 @@ export default function HeroSection() {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
+            aria-hidden="true"
           >
             <path d="M10 4v12M6 12l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
