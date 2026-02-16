@@ -51,7 +51,7 @@ export const projects: Project[] = [
     fullDescription: "身体にも心にもやさしい日本茶の魅力を再発見するプロジェクト。日本茶業体制強化推進協議会が実施し、未来づくりカンパニーが運営を担当。茶の効能・種類・産地・淹れ方・活用法・歴史の6つのカテゴリーで知識を発信し、「Japan Tea Grass Community」などのイベント開催やSNSでの情報発信を通じて、日本茶文化の普及と茶業の持続可能な発展を目指しています。",
     domain: "life",
     domainLabel: "生命資本",
-    year: "2022",
+    year: "2020",
     image: "/images/mv-jta.jpg",
     previewImage: "/images/preview-JTA.webp",
     externalUrl: "https://japanteaaction.jp/",
