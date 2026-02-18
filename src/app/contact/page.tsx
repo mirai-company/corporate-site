@@ -42,17 +42,7 @@ export default function ContactPage() {
           subject: formData.subject,
           message: formData.message,
           from_name: "未来づくりカンパニー お問い合わせ",
-          // Auto-response email to the person who submitted the form
-          autoresponse: true,
-          autoresponse_from: "info@miraidukuri.co.jp",
-          autoresponse_sender: "未来づくりカンパニー",
-          autoresponse_replyto: "info@miraidukuri.co.jp",
-          autoresponse_subject: locale === "en"
-            ? "Thank you for contacting MIRAI Creation Company"
-            : "【未来づくりカンパニー】お問い合わせありがとうございます",
-          autoresponse_message: locale === "en"
-            ? `Dear ${formData.name},\n\nThank you for contacting MIRAI Creation Company.\n\nWe have received your inquiry and will respond within 2-3 business days.\n\n---\nYour message:\n${formData.message}\n---\n\nBest regards,\nMIRAI Creation Company\nTel: 03-6230-9855\nhttps://miraidukuri.co.jp`
-            : `${formData.name} 様\n\nこの度は未来づくりカンパニーにお問い合わせいただき、誠にありがとうございます。\n\nお問い合わせ内容を確認の上、2〜3営業日以内にご連絡させていただきます。\n\n---\nお問い合わせ内容:\n${formData.message}\n---\n\n株式会社未来づくりカンパニー\nTel: 03-6230-9855\nhttps://miraidukuri.co.jp`,
+          // TODO: Switch to EmailJS for auto-response feature (requires mail server setup)
         }),
       });
 
