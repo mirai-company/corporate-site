@@ -137,8 +137,7 @@ label[for], summary, [tabindex]:not([tabindex="-1"]) {
 }
 
 /* Enhanced focus for dark backgrounds */
-.bg-\\[\\#0B3D91\\] :focus-visible,
-.bg-\\[\\#1A1A1A\\] :focus-visible,
+
 footer :focus-visible {
   outline-color: var(--color-white);
 }
