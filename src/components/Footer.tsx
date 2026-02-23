@@ -15,7 +15,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer role="contentinfo" className="bg-[#1A1A1A] text-white">
+    <footer role="contentinfo" className="dark-surface bg-[#1A1A1A] text-white">
       <div className="container-custom py-16 md:py-20">
         {/* Top section */}
         <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-8 pb-12 border-b border-white/10">

@@ -136,9 +136,8 @@ label[for], summary, [tabindex]:not([tabindex="-1"]) {
   outline-offset: 2px;
 }
 
-/* Enhanced focus for dark backgrounds */
-.bg-\\[\\#0B3D91\\] :focus-visible,
-.bg-\\[\\#1A1A1A\\] :focus-visible,
+/* Enhanced focus for dark backgrounds — add .dark-surface to any dark container with focusable children */
+.dark-surface :focus-visible,
 footer :focus-visible {
   outline-color: var(--color-white);
 }

@@ -12,7 +12,7 @@ export default function CTASection() {
   const { t } = useI18n();
 
   return (
-    <section ref={ref} className="relative py-24 md:py-32 overflow-hidden bg-[#0B3D91]">
+    <section ref={ref} className="dark-surface relative py-24 md:py-32 overflow-hidden bg-[#0B3D91]">
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left: Text content */}

@@ -8,7 +8,7 @@ export default function HeroSection() {
   const { t } = useI18n();
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#050810]">
+    <section className="dark-surface relative min-h-screen flex flex-col overflow-hidden bg-[#050810]">
       {/* Gradient Background - CSS animations for GPU performance */}
       <div className="absolute inset-0 z-0">
         {/* Base gradient */}

@@ -177,7 +177,7 @@ export default function Header() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             aria-label="モバイルメニュー"
-            className="fixed inset-0 z-40 lg:hidden bg-[#0B3D91]"
+            className="dark-surface fixed inset-0 z-40 lg:hidden bg-[#0B3D91]"
           >
             <div className="h-full flex flex-col items-center justify-center">
               <motion.ul
