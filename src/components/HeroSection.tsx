@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 
 export default function HeroSection() {
@@ -106,7 +107,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               className="flex flex-col sm:flex-row justify-center gap-4 mt-14"
             >
-              <a
+              <Link
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 bg-white text-[#0B3D91] px-8 py-4 text-sm tracking-wide hover:bg-white/90 transition-all duration-300 font-gothic font-medium cursor-pointer"
               >
@@ -121,13 +122,13 @@ export default function HeroSection() {
                 >
                   <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about"
                 className="group inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-4 text-sm tracking-wide hover:bg-white/10 hover:border-white/60 transition-all duration-300 font-gothic font-medium cursor-pointer"
               >
                 <span>{t("hero.cta.about")}</span>
-              </a>
+              </Link>
             </motion.div>
           </div>
         </div>
