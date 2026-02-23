@@ -55,7 +55,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "philosophy.headline2": "再起動",
     "philosophy.summary1": "分断された関係性を、事業・制度・運営の設計を通じて再び結び直す。",
     "philosophy.summary2": "それが私たちの使命です。",
-    "philosophy.link": "私たちの理念を詳しく見る",
+    "philosophy.link": "私たちの理念「結びの世界、再起動」を見る",
 
     // Process Section
     "process.label": "Process",
@@ -77,7 +77,7 @@ const translations: Record<Locale, Record<string, string>> = {
     // Projects Section
     "projects.label": "Featured Projects",
     "projects.title": "事業紹介",
-    "projects.viewAll": "すべての事業を見る",
+    "projects.viewAll": "すべての事業",
     "projects.comingSoon": "近日公開",
     "projects.noProjects": "該当するプロジェクトがありません",
     "projects.pageTitle": "事業紹介",
@@ -92,7 +92,7 @@ const translations: Record<Locale, Record<string, string>> = {
     // News Section
     "news.label": "News",
     "news.title": "お知らせ",
-    "news.viewAll": "すべてのお知らせを見る",
+    "news.viewAll": "過去のお知らせ",
     "news.readMore": "続きを読む",
     "news.noNews": "該当するお知らせがありません",
     "news.filter.all": "すべて",
