@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Project } from "@/data/projects";
+import { useI18n } from "@/lib/i18n";
 
 interface Props {
   project: Project;
@@ -11,6 +12,9 @@ interface Props {
 }
 
 export default function ProjectDetailClient({ project, domainInfo, relatedProjects }: Props) {
+  const { locale } = useI18n();
+  const isEn = locale === "en";
+
   return (
     <>
       {/* Hero */}
@@ -24,17 +28,17 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm mb-8 font-gothic">
               <Link href="/" className="text-[#555555] hover:text-[#0B3D91] transition-colors duration-200 cursor-pointer">
-                ホーム
+                {isEn ? "Home" : "ホーム"}
               </Link>
               <span className="text-[#555555]">/</span>
               <Link
                 href="/projects"
                 className="text-[#555555] hover:text-[#0B3D91] transition-colors duration-200 cursor-pointer"
               >
-                事業紹介
+                {isEn ? "Projects" : "事業紹介"}
               </Link>
               <span className="text-[#555555]">/</span>
-              <span className="text-[#333333]">{project.title}</span>
+              <span className="text-[#333333]">{isEn && project.titleEn ? project.titleEn : project.title}</span>
             </nav>
 
             {/* Meta */}
@@ -43,29 +47,29 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                 className="inline-block text-white text-xs px-3 py-1 tracking-wider font-gothic"
                 style={{ backgroundColor: domainInfo.color }}
               >
-                {domainInfo.ja}
+                {isEn ? domainInfo.en : domainInfo.ja}
               </span>
               <span className={`text-sm font-gothic ${project.comingSoon ? 'text-[#1A1A1A] font-medium' : 'text-[#0B3D91]'}`}>
-                {project.comingSoon ? '近日公開' : project.year}
+                {project.comingSoon ? (isEn ? 'Coming Soon' : '近日公開') : project.year}
               </span>
               {project.location && (
                 <span className="text-sm text-[#555555] font-gothic">
-                  {project.location}
+                  {isEn && project.locationEn ? project.locationEn : project.location}
                 </span>
               )}
             </div>
 
             {/* Title */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-[#333333] leading-tight">
-              {project.title}
+              {isEn && project.titleEn ? project.titleEn : project.title}
             </h1>
             {project.titleEn && (
               <p className="text-lg text-[#555555] mt-2 font-gothic">
-                {project.titleEn}
+                {isEn ? project.title : project.titleEn}
               </p>
             )}
             <p className="text-xl text-[#555555] mt-4 font-gothic">
-              {project.subtitle}
+              {isEn && project.subtitleEn ? project.subtitleEn : project.subtitle}
             </p>
           </motion.div>
         </div>
@@ -100,11 +104,13 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
               className="lg:col-span-2"
             >
               <h2 className="text-2xl font-heading text-[#333333] mb-6">
-                プロジェクト概要
+                {isEn ? "Project Overview" : "プロジェクト概要"}
               </h2>
               <div className="prose prose-lg max-w-none font-gothic text-[#555555]">
                 <p className="leading-relaxed">
-                  {project.fullDescription || project.description}
+                  {isEn
+                    ? (project.fullDescriptionEn || project.descriptionEn || project.fullDescription || project.description)
+                    : (project.fullDescription || project.description)}
                 </p>
               </div>
 
@@ -112,7 +118,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
               {project.gallery && project.gallery.length > 0 && (
                 <div className="mt-12">
                   <h3 className="text-xl font-heading text-[#333333] mb-6">
-                    ギャラリー
+                    {isEn ? "Gallery" : "ギャラリー"}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {project.gallery.map((image, index) => (
@@ -145,26 +151,26 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                 {/* Project Info */}
                 <div className="bg-[#FAFAFA] p-6">
                   <h3 className="text-sm font-medium text-[#333333] mb-4 font-gothic">
-                    プロジェクト情報
+                    {isEn ? "Project Information" : "プロジェクト情報"}
                   </h3>
                   <dl className="space-y-4 text-sm">
                     <div>
-                      <dt className="text-[#555555] font-gothic">事業領域</dt>
+                      <dt className="text-[#555555] font-gothic">{isEn ? "Domain" : "事業領域"}</dt>
                       <dd className="text-[#333333] mt-1 font-gothic">
-                        {domainInfo.ja}
+                        {isEn ? domainInfo.en : domainInfo.ja}
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-[#555555] font-gothic">{project.comingSoon ? 'ステータス' : '開始年'}</dt>
+                      <dt className="text-[#555555] font-gothic">{project.comingSoon ? (isEn ? 'Status' : 'ステータス') : (isEn ? 'Year Started' : '開始年')}</dt>
                       <dd className="text-[#333333] mt-1 font-gothic">
-                        {project.comingSoon ? '近日公開' : project.year}
+                        {project.comingSoon ? (isEn ? 'Coming Soon' : '近日公開') : project.year}
                       </dd>
                     </div>
                     {project.location && (
                       <div>
-                        <dt className="text-[#555555] font-gothic">場所</dt>
+                        <dt className="text-[#555555] font-gothic">{isEn ? "Location" : "場所"}</dt>
                         <dd className="text-[#333333] mt-1 font-gothic">
-                          {project.location}
+                          {isEn && project.locationEn ? project.locationEn : project.location}
                         </dd>
                       </div>
                     )}
@@ -175,10 +181,10 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                 {project.tags && project.tags.length > 0 && (
                   <div>
                     <h3 className="text-sm font-medium text-[#333333] mb-4 font-gothic">
-                      タグ
+                      {isEn ? "Tags" : "タグ"}
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
+                      {(isEn && project.tagsEn ? project.tagsEn : project.tags).map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-[#0B3D91] bg-[#0B3D91]/10 px-3 py-1.5 font-gothic"
@@ -200,7 +206,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                       className="group block w-full text-center border-2 border-[#0B3D91] text-[#0B3D91] px-6 py-4 text-sm hover:bg-[#0B3D91] hover:text-white hover:shadow-lg transition-all duration-200 font-gothic cursor-pointer"
                     >
                       <span className="flex items-center justify-center gap-2">
-                        公式サイトを見る
+                        {isEn ? "Visit Official Site" : "公式サイトを見る"}
                         <svg
                           className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
                           fill="none"
@@ -225,7 +231,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                     href="/contact"
                     className="block w-full text-center bg-[#0B3D91] text-white px-6 py-4 text-sm hover:bg-[#072B66] hover:shadow-lg transition-all duration-200 font-gothic cursor-pointer"
                   >
-                    このプロジェクトについて相談する
+                    {isEn ? "Inquire About This Project" : "このプロジェクトについて相談する"}
                   </Link>
                 </div>
               </div>
@@ -239,7 +245,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
         <section className="section-padding bg-[#FAFAFA]">
           <div className="container-custom">
             <h2 className="text-2xl font-heading text-[#333333] mb-8">
-              関連プロジェクト
+              {isEn ? "Related Projects" : "関連プロジェクト"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {relatedProjects.map((related) => (
@@ -255,10 +261,10 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                     />
                   </div>
                   <h3 className="text-lg font-heading text-[#333333] group-hover:text-[#0B3D91] transition-colors duration-200">
-                    {related.title}
+                    {isEn && related.titleEn ? related.titleEn : related.title}
                   </h3>
                   <p className="text-sm text-[#555555] mt-1 font-gothic">
-                    {related.subtitle}
+                    {isEn && related.subtitleEn ? related.subtitleEn : related.subtitle}
                   </p>
                 </Link>
               ))}

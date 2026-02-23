@@ -85,7 +85,7 @@ export default function ProjectsSection() {
                   {locale === "en" && project.titleEn ? project.titleEn : project.title}
                 </h3>
                 <p className="text-sm text-[#555] mt-2 font-gothic leading-relaxed">
-                  {project.subtitle}
+                  {locale === "en" && project.subtitleEn ? project.subtitleEn : project.subtitle}
                 </p>
               </Link>
             );

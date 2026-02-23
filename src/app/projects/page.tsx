@@ -113,7 +113,7 @@ function ProjectsContent() {
                           </span>
                           {project.location && (
                             <span className="text-xs text-[#555] font-gothic">
-                              {project.location}
+                              {locale === "en" && project.locationEn ? project.locationEn : project.location}
                             </span>
                           )}
                         </div>
@@ -121,16 +121,16 @@ function ProjectsContent() {
                           {locale === "en" && project.titleEn ? project.titleEn : project.title}
                         </h3>
                         <p className="text-sm text-[#555] mt-2 font-gothic">
-                          {project.subtitle}
+                          {locale === "en" && project.subtitleEn ? project.subtitleEn : project.subtitle}
                         </p>
                         <p className="text-sm text-[#555] mt-3 line-clamp-2 font-gothic">
-                          {project.description}
+                          {locale === "en" && project.descriptionEn ? project.descriptionEn : project.description}
                         </p>
 
                         {/* Tags */}
                         {project.tags && (
                           <div className="flex flex-wrap gap-2 mt-4">
-                            {project.tags.slice(0, 3).map((tag) => (
+                            {(locale === "en" && project.tagsEn ? project.tagsEn : project.tags).slice(0, 3).map((tag) => (
                               <span
                                 key={tag}
                                 className="text-xs text-[#0B3D91] bg-[#0B3D91]/10 px-2 py-1 font-gothic"
