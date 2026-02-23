@@ -149,19 +149,24 @@ export default function AboutPage() {
       <section className="section-padding bg-[#FAFAFA]">
         <div className="container-custom">
           <SectionFade>
-            <span className="text-[#0B3D91] text-sm tracking-[0.2em] uppercase font-gothic">
+            {/* Section Label */}
+            <span className="text-[#0B3D91] text-xs tracking-[0.2em] uppercase font-gothic">
               {t("about.ceo.label")}
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading text-[#1A1A1A] mt-4">
-              {t("about.ceo.title")}
-            </h2>
-            <p className="text-sm text-[#555] mt-2 mb-12 font-gothic">
-              {t("about.ceo.company")} {t("about.ceo.position")}
-            </p>
+
+            {/* Name + Subtitle header block */}
+            <div className="mt-4 mb-16">
+              <h2 className="text-4xl md:text-5xl font-heading text-[#1A1A1A] leading-tight">
+                {t("about.ceo.title")}
+              </h2>
+              <p className="text-sm text-[#888] mt-3 font-gothic tracking-wide">
+                {t("about.ceo.company")}{locale === "ja" ? "　" : " / "}{t("about.ceo.position")}
+              </p>
+            </div>
           </SectionFade>
 
           <SectionFade>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               {/* Photo */}
               <div className="aspect-[4/5] bg-gray-200 overflow-hidden relative">
                 <Image
@@ -175,35 +180,36 @@ export default function AboutPage() {
               </div>
 
               {/* Bio */}
-              <div>
+              <div className="lg:pt-2">
+                {/* English reading for JP locale */}
                 {locale === "ja" && (
-                  <p className="text-sm text-[#555] mb-6 font-gothic">{t("about.ceo.nameEn")}</p>
+                  <p className="text-xs text-[#999] tracking-widest uppercase font-gothic mb-5">{t("about.ceo.nameEn")}</p>
                 )}
 
                 {/* Roles */}
                 <div className="mb-8 pb-8 border-b border-[#E5E5E5]">
-                  <p className="text-sm text-[#555] font-gothic leading-relaxed whitespace-pre-line">
+                  <p className="text-sm text-[#555] font-gothic leading-[2] whitespace-pre-line">
                     {t("about.ceo.roles")}
                   </p>
                 </div>
 
                 {/* Career */}
-                <div className="space-y-4 text-[#555] font-gothic">
-                  <h4 className="text-sm font-medium text-[#1A1A1A] tracking-wider">{t("about.ceo.career")}</h4>
+                <div className="space-y-4 text-[#555] font-gothic text-sm">
+                  <h4 className="text-xs font-medium text-[#1A1A1A] tracking-[0.15em] uppercase">{t("about.ceo.career")}</h4>
                   <p className="leading-[1.9]">
                     {t("about.ceo.career1")}
                   </p>
                   <p className="leading-[1.9]">
                     {t("about.ceo.career2")}
                   </p>
-                  <p className="text-sm leading-[1.9]">
+                  <p className="text-xs text-[#888] leading-[1.9]">
                     {t("about.ceo.book")}
                   </p>
                 </div>
 
                 {/* Statement */}
                 <div className="mt-8 pt-8 border-t border-[#E5E5E5]">
-                  <p className="text-base text-[#1A1A1A] font-gothic font-medium leading-[1.9] whitespace-pre-line">
+                  <p className="text-base text-[#1A1A1A] font-gothic font-medium leading-[2] whitespace-pre-line">
                     {t("about.ceo.statement")}
                   </p>
                 </div>
