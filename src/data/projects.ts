@@ -112,7 +112,7 @@ export const projects: Project[] = [
   {
     id: "kamimusubi",
     title: "深結の神結び",
-    titleEn: "Miyū no Kamimusubi",
+    titleEn: "Myu-Kamimusubi",
     subtitle: "日本神話の叡智を現代に届けるファンコミュニティ",
     subtitleEn: "A Fan Community Bringing Ancient Japanese Mythology to Modern Life",
     description: "ヒーリングシンガー深結（ふかむす）を中心に、神話の語り、祈りの歌、神社巡りを通じて、自分らしい「結び」を見つけるコミュニティ。",
