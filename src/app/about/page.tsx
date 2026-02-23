@@ -305,7 +305,7 @@ export default function AboutPage() {
       <section className="section-padding bg-[#FAFAFA]">
         <div className="container-custom">
           <SectionFade>
-            <span className="text-[#0B3D91] text-sm tracking-[0.2em] uppercase font-gothic">
+            <span className="text-[#0B3D91] text-xs tracking-[0.2em] uppercase font-gothic">
               {t("about.team.label")}
             </span>
             <h2 className="text-3xl md:text-4xl font-heading text-[#1A1A1A] mt-4 mb-12">
@@ -353,7 +353,7 @@ export default function AboutPage() {
                   className="h-36 md:h-44 w-auto object-contain"
                 />
               </div>
-              <span className="text-[#0B3D91] text-sm tracking-[0.2em] uppercase font-gothic">
+              <span className="text-[#0B3D91] text-xs tracking-[0.2em] uppercase font-gothic">
                 {t("about.company.label")}
               </span>
               <h2 className="text-3xl md:text-4xl font-heading text-[#1A1A1A] mt-4">
