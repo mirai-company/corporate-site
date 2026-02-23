@@ -16,12 +16,12 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined);
 const translations: Record<Locale, Record<string, string>> = {
   ja: {
     // Navigation
-    "nav.philosophy": "理念",
-    "nav.about": "私たちについて",
-    "nav.projects": "事業紹介",
-    "nav.news": "お知らせ",
-    "nav.contact": "お問い合わせ",
-    "nav.home": "ホーム",
+    "nav.philosophy": "Philosophy",
+    "nav.about": "About Us",
+    "nav.projects": "Projects",
+    "nav.news": "News",
+    "nav.contact": "Contact",
+    "nav.home": "Home",
 
     // Hero Section
     "hero.headline1": "分断された関係性を、",
