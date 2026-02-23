@@ -73,7 +73,7 @@ export const projects: Project[] = [
   {
     id: "mirai-gochiso",
     title: "未来へのごちそう",
-    titleEn: "MIRAI GOCHISO",
+    titleEn: "MIRAI e no Gochiso",
     subtitle: "食べることが、未来をつくる。",
     subtitleEn: "Eating Creates the Future.",
     description: "お米を中心とした日本の食文化を復活させ、生産者・地域・地球との繋がりを通じて持続可能な食の未来を創造するレストラン。",
