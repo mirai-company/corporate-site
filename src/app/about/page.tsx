@@ -152,12 +152,9 @@ export default function AboutPage() {
             <span className="text-[#0B3D91] text-sm tracking-[0.2em] uppercase font-gothic">
               {t("about.ceo.label")}
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading text-[#1A1A1A] mt-4">
+            <h2 className="text-3xl md:text-4xl font-heading text-[#1A1A1A] mt-4 mb-12">
               {t("about.ceo.title")}
             </h2>
-            <p className="text-sm text-[#555] mt-2 mb-12 font-gothic">
-              {t("about.ceo.company")} {t("about.ceo.position")}
-            </p>
           </SectionFade>
 
           <SectionFade>
@@ -176,9 +173,16 @@ export default function AboutPage() {
 
               {/* Bio */}
               <div>
-                {locale === "ja" && (
-                  <p className="text-sm text-[#555] mb-6 font-gothic">{t("about.ceo.nameEn")}</p>
-                )}
+                <div className="mb-8">
+                  <p className="text-sm text-[#0B3D91] tracking-wider font-gothic leading-relaxed">
+                    {t("about.ceo.company")}<br />
+                    {t("about.ceo.position")}
+                  </p>
+                  <h3 className="text-3xl font-heading text-[#1A1A1A] mt-4">
+                    {t("about.ceo.name")}
+                  </h3>
+                  <p className="text-sm text-[#555] mt-1 font-gothic">{t("about.ceo.nameEn")}</p>
+                </div>
 
                 {/* Roles */}
                 <div className="mb-8 pb-8 border-b border-[#E5E5E5]">
