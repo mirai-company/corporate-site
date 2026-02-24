@@ -13,6 +13,7 @@ export default function Header() {
   const { locale, setLocale, t } = useI18n();
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const showBurgerOnDesktop = isHomePage && !scrolled;
 
   const navItems = [
     { href: "/philosophy", labelKey: "nav.philosophy" },
@@ -34,6 +35,13 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Auto-close burger when transitioning from hero to scrolled state on desktop
+  useEffect(() => {
+    if (!showBurgerOnDesktop && isOpen) {
+      setIsOpen(false);
+    }
+  }, [showBurgerOnDesktop, isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -79,7 +87,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav aria-label="メインナビゲーション" className="hidden lg:flex items-center gap-8">
+            <nav aria-label="メインナビゲーション" className={`items-center gap-8 ${showBurgerOnDesktop ? "hidden" : "hidden lg:flex"}`}>
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -137,7 +145,7 @@ export default function Header() {
             {/* Mobile Menu Button - 44px touch target */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="relative z-50 w-11 h-11 flex lg:hidden items-center justify-center cursor-pointer"
+              className={`relative z-50 w-11 h-11 flex items-center justify-center cursor-pointer ${showBurgerOnDesktop ? "" : "lg:hidden"}`}
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               <div className="relative w-5 h-3">
@@ -177,7 +185,7 @@ export default function Header() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             aria-label="モバイルメニュー"
-            className="dark-surface fixed inset-0 z-40 lg:hidden bg-[#0B3D91]"
+            className="dark-surface fixed inset-0 z-40 bg-[#0B3D91]"
           >
             <div className="h-full flex flex-col items-center justify-center">
               <motion.ul
@@ -235,6 +243,43 @@ export default function Header() {
                     >
                       EN
                     </button>
+                  </div>
+                </motion.li>
+
+                {/* Social Media Links */}
+                <motion.li
+                  variants={{
+                    open: { opacity: 1, y: 0 },
+                    closed: { opacity: 0, y: 20 },
+                  }}
+                  className="text-center pt-4"
+                >
+                  <div className="flex items-center justify-center gap-6">
+                    <a
+                      href="https://x.com/expmirai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="X (Twitter)"
+                      className="text-white/50 hover:text-white transition-colors duration-200 cursor-pointer"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                    </a>
+                    <span className="w-px h-5 bg-white/20" aria-hidden="true" />
+                    <a
+                      href="https://www.facebook.com/expmirai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                      className="text-white/50 hover:text-white transition-colors duration-200 cursor-pointer"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                      </svg>
+                    </a>
                   </div>
                 </motion.li>
               </motion.ul>
