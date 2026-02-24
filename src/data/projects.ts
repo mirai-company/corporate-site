@@ -83,7 +83,7 @@ export const projects: Project[] = [
     domain: "life",
     domainLabel: "生命資本",
     year: "2024",
-    location: "東京都港区赤坂",
+    location: "",
     locationEn: "Akasaka, Minato-ku, Tokyo",
     image: "/images/miraie.jpg",
     externalUrl: "https://mira-gochi.com/",
@@ -130,7 +130,7 @@ export const projects: Project[] = [
   },
   {
     id: "designing-safety",
-    title: "デザインセーフティ",
+    title: "Designing Safety",
     titleEn: "Designing Safety",
     subtitle: "防犯・防災でつなぐ未来",
     subtitleEn: "Connecting the Future Through Crime Prevention & Disaster Preparedness",
@@ -149,7 +149,7 @@ export const projects: Project[] = [
   },
   {
     id: "hisui-protection",
-    title: "翡翠プロテクション",
+    title: "HISUI PROTECTION",
     titleEn: "HISUI PROTECTION",
     subtitle: "世界に誇る、和の護り ― 心を満たす悠久の旅",
     subtitleEn: "Japan's Finest Protection — A Timeless Journey That Enriches the Soul",
