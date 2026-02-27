@@ -13,7 +13,6 @@ export default function Header() {
   const { locale, setLocale, t } = useI18n();
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const showBurgerOnDesktop = isHomePage && !scrolled;
 
   const navItems = [
     { href: "/philosophy", labelKey: "nav.philosophy" },
@@ -35,13 +34,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Auto-close burger when transitioning from hero to scrolled state on desktop
-  useEffect(() => {
-    if (!showBurgerOnDesktop && isOpen) {
-      setIsOpen(false);
-    }
-  }, [showBurgerOnDesktop, isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -87,7 +79,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav aria-label="メインナビゲーション" className={`items-center gap-8 ${showBurgerOnDesktop ? "hidden" : "hidden lg:flex"}`}>
+            <nav aria-label="メインナビゲーション" className="hidden">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -145,7 +137,7 @@ export default function Header() {
             {/* Mobile Menu Button - 44px touch target */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`relative z-50 w-11 h-11 flex items-center justify-center cursor-pointer ${showBurgerOnDesktop ? "" : "lg:hidden"}`}
+              className="relative z-50 w-11 h-11 flex items-center justify-center cursor-pointer"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               <div className="relative w-5 h-3">
