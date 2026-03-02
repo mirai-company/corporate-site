@@ -219,7 +219,7 @@ export default function Header() {
                 >
                   <div className="flex items-center justify-center gap-2 text-white/60 text-lg">
                     <button
-                      onClick={() => setLocale("ja")}
+                      onClick={() => { setLocale("ja"); setIsOpen(false); }}
                       className={`px-2 transition-colors duration-200 cursor-pointer ${
                         locale === "ja" ? "text-white font-medium" : "hover:text-white/80"
                       }`}
@@ -228,7 +228,7 @@ export default function Header() {
                     </button>
                     <span>/</span>
                     <button
-                      onClick={() => setLocale("en")}
+                      onClick={() => { setLocale("en"); setIsOpen(false); }}
                       className={`px-2 transition-colors duration-200 cursor-pointer ${
                         locale === "en" ? "text-white font-medium" : "hover:text-white/80"
                       }`}
