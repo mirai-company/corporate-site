@@ -38,7 +38,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                 {isEn ? "Projects" : "事業紹介"}
               </Link>
               <span className="text-[#555555]">/</span>
-              <span className="text-[#333333]">{isEn && project.titleEn ? project.titleEn : project.title}</span>
+              <span className="text-[#1A1A1A]">{isEn && project.titleEn ? project.titleEn : project.title}</span>
             </nav>
 
             {/* Meta */}
@@ -60,7 +60,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-[#333333] leading-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading text-[#1A1A1A] leading-tight">
               {isEn && project.titleEn ? project.titleEn : project.title}
             </h1>
             {project.titleEn && (
@@ -103,7 +103,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
               transition={{ duration: 0.8, delay: 0.3 }}
               className="lg:col-span-2"
             >
-              <h2 className="text-2xl font-heading text-[#333333] mb-6">
+              <h2 className="text-2xl font-heading text-[#1A1A1A] mb-6">
                 {isEn ? "Project Overview" : "プロジェクト概要"}
               </h2>
               <div className="prose prose-lg max-w-none font-gothic text-[#555555]">
@@ -117,7 +117,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
               {/* Gallery */}
               {project.gallery && project.gallery.length > 0 && (
                 <div className="mt-12">
-                  <h3 className="text-xl font-heading text-[#333333] mb-6">
+                  <h3 className="text-xl font-heading text-[#1A1A1A] mb-6">
                     {isEn ? "Gallery" : "ギャラリー"}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -150,26 +150,26 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
               <div className="sticky top-32 space-y-8">
                 {/* Project Info */}
                 <div className="bg-[#FAFAFA] p-6">
-                  <h3 className="text-sm font-medium text-[#333333] mb-4 font-gothic">
+                  <h3 className="text-sm font-medium text-[#1A1A1A] mb-4 font-gothic">
                     {isEn ? "Project Information" : "プロジェクト情報"}
                   </h3>
                   <dl className="space-y-4 text-sm">
                     <div>
                       <dt className="text-[#555555] font-gothic">{isEn ? "Domain" : "事業領域"}</dt>
-                      <dd className="text-[#333333] mt-1 font-gothic">
+                      <dd className="text-[#1A1A1A] mt-1 font-gothic">
                         {isEn ? domainInfo.en : domainInfo.ja}
                       </dd>
                     </div>
                     <div>
                       <dt className="text-[#555555] font-gothic">{project.comingSoon ? (isEn ? 'Status' : 'ステータス') : (isEn ? 'Year Started' : '開始年')}</dt>
-                      <dd className="text-[#333333] mt-1 font-gothic">
+                      <dd className="text-[#1A1A1A] mt-1 font-gothic">
                         {project.comingSoon ? (isEn ? 'Coming Soon' : '近日公開') : project.year}
                       </dd>
                     </div>
                     {project.location && (
                       <div>
                         <dt className="text-[#555555] font-gothic">{isEn ? "Location" : "場所"}</dt>
-                        <dd className="text-[#333333] mt-1 font-gothic">
+                        <dd className="text-[#1A1A1A] mt-1 font-gothic">
                           {isEn && project.locationEn ? project.locationEn : project.location}
                         </dd>
                       </div>
@@ -180,7 +180,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                 {/* Tags */}
                 {project.tags && project.tags.length > 0 && (
                   <div>
-                    <h3 className="text-sm font-medium text-[#333333] mb-4 font-gothic">
+                    <h3 className="text-sm font-medium text-[#1A1A1A] mb-4 font-gothic">
                       {isEn ? "Tags" : "タグ"}
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -244,7 +244,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
       {relatedProjects.length > 0 && (
         <section className="section-padding bg-[#FAFAFA]">
           <div className="container-custom">
-            <h2 className="text-2xl font-heading text-[#333333] mb-8">
+            <h2 className="text-2xl font-heading text-[#1A1A1A] mb-8">
               {isEn ? "Related Projects" : "関連プロジェクト"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -260,7 +260,7 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
                       style={{ backgroundImage: `url('${related.image}')` }}
                     />
                   </div>
-                  <h3 className="text-lg font-heading text-[#333333] group-hover:text-[#0B3D91] transition-colors duration-200">
+                  <h3 className="text-lg font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-200">
                     {isEn && related.titleEn ? related.titleEn : related.title}
                   </h3>
                   <p className="text-sm text-[#555555] mt-1 font-gothic">

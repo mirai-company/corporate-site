@@ -73,7 +73,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
               className="text-center"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-gothic font-black text-white leading-[1.15] tracking-[-0.02em]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white leading-[1.15] tracking-[-0.02em]">
                 {t("hero.headline1")}
                 <br />
                 {t("hero.headline2")}

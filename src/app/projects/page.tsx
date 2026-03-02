@@ -117,7 +117,7 @@ function ProjectsContent() {
                             </span>
                           )}
                         </div>
-                        <h3 className="text-xl font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-200">
+                        <h3 className="text-xl font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-200 line-clamp-2">
                           {locale === "en" && project.titleEn ? project.titleEn : project.title}
                         </h3>
                         <p className="text-sm text-[#555] mt-2 font-gothic">
@@ -174,7 +174,7 @@ export default function ProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-[#0B3D91] text-sm tracking-[0.2em] uppercase font-gothic">
+            <span className="text-[#0B3D91] text-xs tracking-[0.2em] uppercase font-gothic">
               Projects
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-[#1A1A1A] mt-4 leading-tight">

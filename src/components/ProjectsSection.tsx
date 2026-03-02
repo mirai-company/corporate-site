@@ -81,7 +81,7 @@ export default function ProjectsSection() {
                     {locale === "en" ? domainInfo.en : domainInfo.ja}
                   </span>
                 </div>
-                <h3 className="text-xl font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-300">
+                <h3 className="text-xl font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-300 line-clamp-2">
                   {locale === "en" && project.titleEn ? project.titleEn : project.title}
                 </h3>
                 <p className="text-sm text-[#555] mt-2 font-gothic leading-relaxed">
