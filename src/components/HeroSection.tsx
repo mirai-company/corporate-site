@@ -90,17 +90,6 @@ export default function HeroSection() {
               {t("hero.subtitle")}
             </motion.p>
 
-            {/* Description */}
-            {t("hero.description") && (
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-center text-white/60 text-xs md:text-sm max-w-lg mx-auto mt-4 font-gothic tracking-wide"
-              >
-                {t("hero.description")}
-              </motion.p>
-            )}
 
             {/* CTA Buttons */}
             <motion.div
