@@ -6,17 +6,9 @@ import Image from "next/image";
 import { projects, domainLabels } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
 
-// Get the 3 newest projects (sorted by year descending, coming soon at end)
+// Get the first 3 projects (respects array order set by CEO)
 const getFeaturedProjects = () => {
-  return [...projects]
-    .sort((a, b) => {
-      // Coming soon projects go to the end
-      if (a.comingSoon && !b.comingSoon) return 1;
-      if (!a.comingSoon && b.comingSoon) return -1;
-      // Otherwise sort by year descending
-      return parseInt(b.year) - parseInt(a.year);
-    })
-    .slice(0, 3);
+  return projects.slice(0, 3);
 };
 
 export default function ProjectsSection() {

@@ -26,14 +26,7 @@ function ProjectsContent() {
 
   const filteredProjects = useMemo(() => {
     const filtered = activeDomain === "all" ? projects : projects.filter((p) => p.domain === activeDomain);
-    // Sort by year descending (newest first), but coming soon projects go to the end
-    return [...filtered].sort((a, b) => {
-      // Coming soon projects go to the end
-      if (a.comingSoon && !b.comingSoon) return 1;
-      if (!a.comingSoon && b.comingSoon) return -1;
-      // Otherwise sort by year descending
-      return parseInt(b.year) - parseInt(a.year);
-    });
+    return [...filtered];
   }, [activeDomain]);
 
   return (
