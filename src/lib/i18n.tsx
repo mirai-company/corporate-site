@@ -71,7 +71,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "process.04.description": "現場でのプロトタイプ・PoC・事業立ち上げ",
     "process.05.title": "運営構築",
     "process.05.description": "地域と共に「継続できる運営体制」を構築する",
-    "process.06.title": "発進・評価",
+    "process.06.title": "成果可視化",
     "process.06.description": "成果の可視化・ブランド化・横展開",
 
     // Projects Section
@@ -280,7 +280,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "process.04.description": "On-site prototyping, PoC, and business launch",
     "process.05.title": "Operations",
     "process.05.description": "Building sustainable operational structures with the community",
-    "process.06.title": "Launch & Evaluate",
+    "process.06.title": "Outcome Visualization",
     "process.06.description": "Visualizing results, branding, and horizontal expansion",
 
     // Projects Section
