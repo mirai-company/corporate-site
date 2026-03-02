@@ -24,10 +24,10 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.home": "Home",
 
     // Hero Section
-    "hero.headline1": "分断された関係性を、",
-    "hero.headline2": "事業として結び直す。",
-    "hero.subtitle": "社会課題を、事業・ブランド・体験として実装する",
-    "hero.description": "観光プログラム、健康ブランド、地域事業の企画から運営まで",
+    "hero.headline1": "社会課題を、",
+    "hero.headline2": "結び直しで解決する会社。",
+    "hero.subtitle": "分断された領域を横断設計し、観光・健康・エネルギー・食・地域経営を実装可能な事業として形にします。",
+    "hero.description": "",
     "hero.cta.consult": "プロジェクトを相談する",
     "hero.cta.about": "私たちについて",
 
@@ -233,10 +233,10 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.home": "Home",
 
     // Hero Section
-    "hero.headline1": "Reconnecting",
-    "hero.headline2": "Fragmented Relationships.",
-    "hero.subtitle": "Implementing social solutions as business, brand, and experience",
-    "hero.description": "From planning to operation of tourism programs, wellness brands, and regional businesses",
+    "hero.headline1": "Solving Social Issues",
+    "hero.headline2": "Through Reconnection.",
+    "hero.subtitle": "Cross-designing fragmented domains — turning tourism, health, energy, food, and regional management into viable businesses.",
+    "hero.description": "",
     "hero.cta.consult": "Start a Project",
     "hero.cta.about": "About Us",
 
