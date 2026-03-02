@@ -146,9 +146,9 @@ export const projects: Project[] = [
   },
   {
     id: "designing-safety",
-    title: "Designing Safety",
+    title: "人と危険の結び直し―Designing Safety",
     titleEn: "Designing Safety",
-    subtitle: "防犯・防災でつなぐ未来",
+    subtitle: "防犯・防災を自分でデザインする力を備える",
     subtitleEn: "Connecting the Future Through Crime Prevention & Disaster Preparedness",
     description: "日常に潜む災害・犯罪のリスクに気づき、「気づく力」と「守る行動」を身につける安全教育プログラム。",
     descriptionEn: "A safety education program that builds awareness of hidden risks from disasters and crime, developing the ability to notice and take protective action.",
@@ -165,7 +165,7 @@ export const projects: Project[] = [
   },
   {
     id: "hisui-protection",
-    title: "HISUI PROTECTION",
+    title: "人と地域の安全な結び直し―HISUI PROTECTION",
     titleEn: "HISUI PROTECTION",
     subtitle: "世界に誇る、和の護り ― 心を満たす悠久の旅",
     subtitleEn: "Japan's Finest Protection — A Timeless Journey That Enriches the Soul",
@@ -235,7 +235,7 @@ export const projects: Project[] = [
   },
   {
     id: "mibyou-project",
-    title: "未病息災プロジェクト",
+    title: "人と身体の結び直し―未病息災プロジェクト",
     titleEn: "Mibyo Sokusai Project",
     subtitle: "ポジティブに人生を楽しみながら取り組む健康法",
     subtitleEn: "A Positive Approach to Health While Enjoying Life",
