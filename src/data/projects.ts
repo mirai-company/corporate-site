@@ -34,7 +34,7 @@ export const domainLabels: Record<ProjectDomain, { ja: string; en: string; color
 export const projects: Project[] = [
   {
     id: "mito-yell",
-    title: "ミトエール",
+    title: "人と身体の結び直し―ミトエール",
     titleEn: "Mito-yell",
     subtitle: "ミトコンドリア活性化による健康・美容ブランド",
     subtitleEn: "Health & Beauty Brand Powered by Mitochondria Activation",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
   },
   {
     id: "mirai-gochiso",
-    title: "未来へのごちそう",
+    title: "人と人、人と食の結び直し―未来へのごちそう",
     titleEn: "MIRAI e no Gochiso",
     subtitle: "食べることが、未来をつくる。",
     subtitleEn: "Eating Creates the Future.",
@@ -111,7 +111,7 @@ export const projects: Project[] = [
   },
   {
     id: "kamimusubi",
-    title: "深結の神結び",
+    title: "人と神の結び直し―深結の神結び",
     titleEn: "Myu-Kamimusubi",
     subtitle: "日本神話の叡智を現代に届けるファンコミュニティ",
     subtitleEn: "A Fan Community Bringing Ancient Japanese Mythology to Modern Life",
@@ -186,10 +186,10 @@ export const projects: Project[] = [
   },
   {
     id: "container-farm",
-    title: "コンテナファームプロジェクト",
+    title: "人と食の結び直し―自立型コンテナファーム",
     titleEn: "Container Farm Project",
-    subtitle: "分散型食料生産システム",
-    subtitleEn: "Decentralized Food Production System",
+    subtitle: "いつもの時ももしもの時も安心な食料生産システム",
+    subtitleEn: "A Reliable Food Production System for Everyday and Emergency",
     description: "コンテナ型の垂直農法を活用し、都市部や過疎地域での食料自給率向上と防災機能を兼ね備えたシステムを構築。",
     descriptionEn: "Building a system combining improved food self-sufficiency and disaster preparedness in urban and rural areas through container-based vertical farming.",
     domain: "circular",
