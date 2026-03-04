@@ -5,7 +5,18 @@ import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 
 export default function HeroSection() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+
+  const _headline2 = t("hero.headline2");
+  let headline2Before: string | null = null;
+  let headline2After: string | null = null;
+  if (locale === "ja") {
+    const splitMarker = "結び直しで";
+    if (_headline2.includes(splitMarker)) {
+      headline2Before = splitMarker;
+      headline2After = _headline2.replace(splitMarker, "");
+    }
+  }
 
   return (
     <section className="dark-surface relative min-h-screen flex flex-col overflow-hidden bg-[#050810]">
@@ -76,7 +87,15 @@ export default function HeroSection() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white leading-[1.15] tracking-[-0.02em]">
                 {t("hero.headline1")}
                 <br />
-                {t("hero.headline2")}
+                {headline2Before ? (
+                  <>
+                    {headline2Before}
+                    <br className="sm:hidden" />
+                    {headline2After}
+                  </>
+                ) : (
+                  _headline2
+                )}
               </h1>
             </motion.div>
 

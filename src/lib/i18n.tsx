@@ -24,8 +24,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.home": "Home",
 
     // Hero Section
-    "hero.headline1": "社会課題を、",
-    "hero.headline2": "結び直しで解決する会社。",
+    "hero.headline1": "社会課題を",
+    "hero.headline2": "結び直しで解決する会社",
     "hero.subtitle": "分断された領域を横断設計し、観光・健康・エネルギー・食・地域経営を実装可能な事業として形にします。",
     "hero.cta.consult": "プロジェクトを相談する",
     "hero.cta.about": "私たちについて",
