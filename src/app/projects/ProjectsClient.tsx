@@ -95,7 +95,9 @@ function ProjectsContent({ projects }: Props) {
             >
               {filteredProjects.map((project, index) => {
                 const domainInfo = domainLabels[project.domain];
-                const slug = project.id?.current;
+                console.log('project.image:', project.image)
+                console.log('project.previewImage:', project.previewImage)
+                const slug = project.id;
                 const imageSrc = project.previewImage
                   ? urlFor(project.previewImage).width(800).height(600).url()
                   : project.image

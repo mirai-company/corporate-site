@@ -7,12 +7,10 @@ import ProjectDetailClient from "./ProjectDetailClient";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function generateStaticParams() {
   const projects = await client.fetch(PROJECTS_QUERY);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return projects.map((project: any) => ({
-    id: project.id?.current,
+    id: project.id,
   }));
 }
-
 interface Props {
   params: Promise<{ id: string }>;
 }

@@ -41,7 +41,7 @@ interface Props {
 export default function ProjectDetailClient({ project, domainInfo, relatedProjects }: Props) {
   const { locale } = useI18n();
   const isEn = locale === "en";
-
+  const mainImageSrc = project.image ? urlFor(project.image).width(1600).height(700).url() : null;
   return (
     <>
       {/* Hero */}
@@ -111,10 +111,9 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-gray-100"
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${project.image}')` }}
-            />
+            {mainImageSrc && (
+             <Image src={mainImageSrc} alt={isEn && project.titleEn ? project.titleEn : project.title} fill className="object-cover" priority />
+            )}
           </motion.div>
         </div>
       </section>

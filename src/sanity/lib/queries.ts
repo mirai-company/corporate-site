@@ -37,7 +37,7 @@ export const NEWS_ITEM_QUERY = defineQuery(`
 export const PROJECTS_QUERY = defineQuery(`
   *[_type == "project"] | order(order asc) {
     _id,
-    id,
+    "id": id.current,
     title,
     titleEn,
     subtitle,
@@ -63,7 +63,7 @@ export const PROJECTS_QUERY = defineQuery(`
 export const PROJECT_ITEM_QUERY = defineQuery(`
   *[_type == "project" && id.current == $id][0] {
     _id,
-    id,
+    "id": id.current,
     title,
     titleEn,
     subtitle,
