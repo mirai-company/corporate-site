@@ -13,7 +13,7 @@ type SanityImage = { asset?: { _ref: string } } | null;
 
 type Project = {
   _id: string;
-  id: { current: string };
+  id: string;
   title: string;
   titleEn?: string;
   subtitle?: string;
@@ -60,8 +60,9 @@ function ProjectsContent({ projects }: Props) {
 
   return (
     <>
-      {/* Filters */}
-      <section className="sticky top-20 md:top-24 z-30 bg-white border-b border-[#E5E5E5]">
+      {/* Filters - fixed positioning */}
+      <div className="h-[53px]" />
+      <section className="fixed top-20 left-0 right-0 z-[51] bg-white border-b border-[#E5E5E5]">
         <div className="container-custom">
           <div className="flex gap-2 md:gap-4 py-4 overflow-x-auto scrollbar-hide">
             {domainFilters.map((filter) => (
@@ -82,7 +83,7 @@ function ProjectsContent({ projects }: Props) {
       </section>
 
       {/* Projects Grid */}
-      <section className="section-padding bg-white">
+      <section className="pt-8 pb-20 md:pt-12 md:pb-28 bg-white">
         <div className="container-custom">
           <AnimatePresence mode="wait">
             <motion.div
@@ -95,8 +96,6 @@ function ProjectsContent({ projects }: Props) {
             >
               {filteredProjects.map((project, index) => {
                 const domainInfo = domainLabels[project.domain];
-                console.log('project.image:', project.image)
-                console.log('project.previewImage:', project.previewImage)
                 const slug = project.id;
                 const imageSrc = project.previewImage
                   ? urlFor(project.previewImage).width(800).height(600).url()
@@ -115,7 +114,6 @@ function ProjectsContent({ projects }: Props) {
                       href={`/projects/${slug}`}
                       className="group block cursor-pointer"
                     >
-                      {/* Image */}
                       <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F5F5] mb-4 transition-shadow duration-200 group-hover:shadow-lg">
                         {imageSrc && (
                           <Image
@@ -136,8 +134,6 @@ function ProjectsContent({ projects }: Props) {
                           </span>
                         </div>
                       </div>
-
-                      {/* Content */}
                       <div>
                         <div className="flex items-center gap-3 mb-2">
                           <span className={`text-xs tracking-wider font-gothic ${project.comingSoon ? "text-[#1A1A1A] font-medium" : "text-[#0B3D91]"}`}>
@@ -190,9 +186,8 @@ function ProjectsContent({ projects }: Props) {
 }
 
 export default function ProjectsClient({ projects }: Props) {
-  const { t } = useI18n();
   return (
-    <Suspense fallback={<div className="py-20 text-center">{t("projects.loading")}</div>}>
+    <Suspense fallback={null}>
       <ProjectsContent projects={projects} />
     </Suspense>
   );

@@ -42,8 +42,9 @@ export default function NewsClient({ newsItems }: Props) {
 
   return (
     <>
-      {/* Filters */}
-      <section className="sticky top-20 md:top-24 z-30 bg-white border-b border-gray-100">
+      {/* Filters - fixed */}
+      <div className="h-[53px]" />
+      <section className="fixed top-20 left-0 right-0 z-[51] bg-white border-b border-gray-100">
         <div className="container-custom">
           <div className="flex gap-2 md:gap-4 py-4 overflow-x-auto scrollbar-hide">
             {newsFilters.map((filter) => (
@@ -64,7 +65,7 @@ export default function NewsClient({ newsItems }: Props) {
       </section>
 
       {/* News List */}
-      <section className="section-padding bg-white">
+      <section className="pt-8 pb-20 md:pt-12 md:pb-28 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl">
             <AnimatePresence mode="wait">
@@ -87,41 +88,38 @@ export default function NewsClient({ newsItems }: Props) {
                       href={`/news/${item.id}`}
                       className="group block py-8 md:py-10 cursor-pointer"
                     >
-                      <div className="grid grid-cols-1 md:grid-cols-[1fr,2fr] gap-6 md:gap-8 items-start">
-                        {/* Content */}
-                        <div className="md:col-span-2">
-                          <div className="flex items-center gap-4 mb-3">
-                            <time className="text-sm text-[#555555] font-gothic">
-                              {item.date}
-                            </time>
-                            <span className="text-xs bg-[#0B3D91]/10 text-[#0B3D91] px-2 py-1 font-gothic">
-                              {locale === "en"
-                                ? categoryLabels[item.category].en
-                                : categoryLabels[item.category].ja}
-                            </span>
-                          </div>
-                          <h2 className="text-lg md:text-xl font-heading text-[#333333] group-hover:text-[#0B3D91] transition-colors duration-200 leading-relaxed">
-                            {locale === "en" && item.titleEn ? item.titleEn : item.title}
-                          </h2>
-                          <p className="text-sm text-[#555555] mt-3 line-clamp-2 font-gothic">
-                            {locale === "en" && item.excerptEn ? item.excerptEn : item.excerpt}
-                          </p>
-                          <div className="mt-4 flex items-center text-[#0B3D91] text-sm">
-                            <span className="font-gothic">{t("news.readMore")}</span>
-                            <svg
-                              className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                              />
-                            </svg>
-                          </div>
+                      <div className="md:col-span-2">
+                        <div className="flex items-center gap-4 mb-3">
+                          <time className="text-sm text-[#555555] font-gothic">
+                            {item.date}
+                          </time>
+                          <span className="text-xs bg-[#0B3D91]/10 text-[#0B3D91] px-2 py-1 font-gothic">
+                            {locale === "en"
+                              ? categoryLabels[item.category].en
+                              : categoryLabels[item.category].ja}
+                          </span>
+                        </div>
+                        <h2 className="text-lg md:text-xl font-heading text-[#333333] group-hover:text-[#0B3D91] transition-colors duration-200 leading-relaxed">
+                          {locale === "en" && item.titleEn ? item.titleEn : item.title}
+                        </h2>
+                        <p className="text-sm text-[#555555] mt-3 line-clamp-2 font-gothic">
+                          {locale === "en" && item.excerptEn ? item.excerptEn : item.excerpt}
+                        </p>
+                        <div className="mt-4 flex items-center text-[#0B3D91] text-sm">
+                          <span className="font-gothic">{t("news.readMore")}</span>
+                          <svg
+                            className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </svg>
                         </div>
                       </div>
                     </Link>
