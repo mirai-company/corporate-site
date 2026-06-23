@@ -9,7 +9,7 @@ type SanityImage = { asset?: { _ref: string } } | null;
 
 type Project = {
   _id: string;
-  id: { current: string };
+  id: string;
   title: string;
   titleEn?: string;
   subtitle?: string;
@@ -277,13 +277,13 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
               {relatedProjects.map((related) => (
                 <Link
                   key={related._id}
-                  href={`/projects/${related.id?.current}`}
+                  href={`/projects/${related.id}`}
                   className="group block cursor-pointer"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden bg-gray-100 mb-4 transition-shadow duration-200 group-hover:shadow-lg">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                      
+                      style={(() => { const img = related.image || related.previewImage; return img ? { backgroundImage: `url('${urlFor(img).width(800).height(450).url()}')` } : undefined; })()}
                     />
                   </div>
                   <h3 className="text-lg font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-200">

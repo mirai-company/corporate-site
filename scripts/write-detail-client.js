@@ -1,4 +1,4 @@
-import { writeFileSync, readFileSync } from 'fs'
+﻿import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
 import { execSync } from 'child_process'
 
@@ -69,7 +69,7 @@ type Project = {
   )
   .replace(
     /href={`\/projects\/\${related\.id}`}/g,
-    'href={`/projects/${related.id?.current}`}'
+    'href={`/projects/${related.id}`}'
   )
   .replace(
     /style={{ backgroundImage: `url\('\${related\.image}'\)` }}/g,

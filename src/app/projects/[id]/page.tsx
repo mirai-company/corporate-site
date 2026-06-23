@@ -28,10 +28,10 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   const allProjects = await client.fetch(PROJECTS_QUERY);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const relatedProjects = allProjects.filter((p: any) =>
-    p.domain === project.domain && p.id?.current !== id
-  ).slice(0, 2);
-
+const relatedProjects = allProjects.filter((p: any) =>
+  p.domain === project.domain && p.id !== id
+).slice(0, 2);
+console.log('related ids:', relatedProjects.map((p: any) => p.id))
   return (
     <ProjectDetailClient
       project={project}
