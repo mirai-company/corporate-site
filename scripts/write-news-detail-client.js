@@ -1,4 +1,7 @@
-"use client";
+import { writeFileSync } from 'fs'
+import { join } from 'path'
+
+const content = `"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -71,7 +74,7 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="max-w-3xl">
             <div className="prose prose-lg max-w-none font-gothic text-[#555555]">
-              {(content || excerpt).split("\n").map((paragraph, index) => (
+              {(content || excerpt).split("\\n").map((paragraph, index) => (
                 <p key={index} className="leading-relaxed mb-4">{paragraph}</p>
               ))}
             </div>
@@ -103,7 +106,7 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
             <h2 className="text-2xl font-heading text-[#333333] mb-8">{locale === "en" ? "Other News" : "その他のお知らせ"}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {otherNews.map((item) => (
-                <Link key={item._id} href={`/news/${item.id}`} className="group block bg-white p-6 cursor-pointer transition-shadow duration-200 hover:shadow-md">
+                <Link key={item._id} href={\`/news/\${item.id}\`} className="group block bg-white p-6 cursor-pointer transition-shadow duration-200 hover:shadow-md">
                   <div className="flex items-center gap-3 mb-3">
                     <time className="text-xs text-[#555555] font-gothic">{item.date}</time>
                     <span className="text-xs bg-[#0B3D91]/10 text-[#0B3D91] px-2 py-0.5 font-gothic">{locale === "en" ? categoryLabels[item.category].en : categoryLabels[item.category].ja}</span>
@@ -118,3 +121,7 @@ export default function NewsDetailClient({ newsItem, otherNews }: Props) {
     </>
   );
 }
+`
+
+writeFileSync(join(process.cwd(), 'src', 'app', 'news', '[id]', 'NewsDetailClient.tsx'), content, 'utf8')
+console.log('Done!')

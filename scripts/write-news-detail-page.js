@@ -1,4 +1,7 @@
-import { client } from "@/sanity/lib/client";
+import { writeFileSync } from 'fs'
+import { join } from 'path'
+
+const content = `import { client } from "@/sanity/lib/client";
 import { NEWS_ITEM_QUERY, NEWS_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import NewsDetailClient from "./NewsDetailClient";
@@ -29,3 +32,7 @@ export default async function NewsDetailPage({ params }: Props) {
 
   return <NewsDetailClient newsItem={newsItem} otherNews={otherNews} />;
 }
+`
+
+writeFileSync(join(process.cwd(), 'src', 'app', 'news', '[id]', 'page.tsx'), content, 'utf8')
+console.log('Done!')

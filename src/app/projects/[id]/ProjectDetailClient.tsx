@@ -2,7 +2,34 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Project } from "@/data/projects";
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
+
+type SanityImage = { asset?: { _ref: string } } | null;
+
+type Project = {
+  _id: string;
+  id: { current: string };
+  title: string;
+  titleEn?: string;
+  subtitle?: string;
+  subtitleEn?: string;
+  description?: string;
+  descriptionEn?: string;
+  fullDescription?: string;
+  fullDescriptionEn?: string;
+  domain: string;
+  year?: string;
+  location?: string;
+  locationEn?: string;
+  image?: SanityImage;
+  previewImage?: SanityImage;
+  gallery?: SanityImage[];
+  tags?: string[];
+  tagsEn?: string[];
+  externalUrl?: string;
+  comingSoon?: boolean;
+};
 import { useI18n } from "@/lib/i18n";
 
 interface Props {
@@ -250,14 +277,14 @@ export default function ProjectDetailClient({ project, domainInfo, relatedProjec
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {relatedProjects.map((related) => (
                 <Link
-                  key={related.id}
-                  href={`/projects/${related.id}`}
+                  key={related._id}
+                  href={`/projects/${related.id?.current}`}
                   className="group block cursor-pointer"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden bg-gray-100 mb-4 transition-shadow duration-200 group-hover:shadow-lg">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                      style={{ backgroundImage: `url('${related.image}')` }}
+                      
                     />
                   </div>
                   <h3 className="text-lg font-heading text-[#1A1A1A] group-hover:text-[#0B3D91] transition-colors duration-200">

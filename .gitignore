@@ -46,3 +46,6 @@ elements/*.psd
 elements/*.ai
 elements/*.mp4
 elements/video.mp4
+
+dist/
+.sanity/
