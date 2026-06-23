@@ -19,7 +19,7 @@ const ceoTimeline = [
   },
   {
     year: "1993",
-    event: "東京本社に異動し、大手金融グループ、大手飲酒メーカーを中心に担当。",
+    event: "東京本社に異動し、大手金融グループ、大手飲料メーカーを中心に担当。",
     eventEn: "Transferred to Tokyo headquarters, handling major financial groups and beverage manufacturers"
   },
   {
